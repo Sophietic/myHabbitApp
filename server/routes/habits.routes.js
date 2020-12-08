@@ -49,12 +49,8 @@ router.get('/explore/:id', (req, res) => {
 //addtomyHabits
 router.post("/explore/:id", (req, res) => {
   const { id } = req.params;
-  console.log(req.body)
   const userId = req.user._id;
   
-
-// const testuserId =  "5fcf442cf2cd010c3a38f489"
-
   User.findByIdAndUpdate(
     userId, {
     $push: {myHabits: id}
@@ -69,5 +65,20 @@ router.post("/explore/:id", (req, res) => {
       res.status(500).json(error)
     })
 })
+
+///show only my habits
+router.get("/my-habits", (req, res) => {
+const userId = req.user._id;
+
+  User.findById(userId)
+      .populate('myHabits')
+      .then((habitFromDB) => {
+        res.status(200).json(habitFromDB);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+    });
 
 module.exports = router;

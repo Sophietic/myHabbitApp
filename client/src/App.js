@@ -9,7 +9,8 @@ import AddHabit from "./components/addHabit/addHabit";
 import HabitList from "./components/habitList/HabitList";
 import HabitDetails from "./components/habitDetails/HabitDetails";
 import AuthService from  "./services/auth.service.js";
-// import MyHabitButton from "./components/myHabbitButton/myHabitButton";
+import MyHabit from "./components/myHabit/myHabit";
+
 
 
 function App() {
@@ -41,7 +42,6 @@ if(loggedInUser){
   return(
     <div> 
         <Header userInSession={loggedInUser} getLoggedInUser={getLoggedInUser} />
-    
         <Switch>
       <Route exact path="/" component={() => <Homepage loggedInUser={loggedInUser}/>} />
       <Route path="/signup" component={() => <Signup getLoggedInUser={getLoggedInUser}/>} />
@@ -49,8 +49,8 @@ if(loggedInUser){
       <Route path="/create" component={AddHabit} />
       <Route exact path="/explore" component={HabitList} />
       <Route exact path="/explore/:id" component={(props) => <HabitDetails {...props} user={loggedInUser}/>} />
-      {/* <Route exact path="/explore/:id" render={props => <HabitDetails {...props} userInSession={loggedInUser}/>} />  */}
-      {/* <Route path="/explore/:id/addToMyHabits" component={(props) => <MyHabitButton {...props} loggedInUser={loggedInUser}/>} />  */}
+      <Route exact path="/my-habits" component={(props) => <MyHabit {...props} user={loggedInUser}/>} />
+
     </Switch>
     </div>
   )
@@ -65,9 +65,8 @@ if(loggedInUser){
       <Route path="/login" component={() => <Login getLoggedInUser={getLoggedInUser}/>} />
       <Route path="/create" component={AddHabit} />
       <Route exact path="/explore" component={HabitList} />
-      <Route exact path="/explore/:id" component={(props) => <HabitDetails {...props} loggedInUser={loggedInUser}/>} />
-      {/* <Route exact path="/explore/:id" render={props => <HabitDetails {...props} userInSession={loggedInUser}/>} />  */}
-      {/* <Route path="/explore/:id/addToMyHabits" component={(props) => <MyHabitButton {...props} loggedInUser={loggedInUser}/>} />  */}
+      <Route exact path="/explore/:id" component={(props) => <HabitDetails {...props} user={loggedInUser}/>} />
+      <Route exact path="/my-habits" component={(props) => <MyHabit {...props} user={loggedInUser}/>} />
     </Switch>
     </div>
   )
