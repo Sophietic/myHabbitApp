@@ -33,16 +33,31 @@ function HabitDetails(props) {
 
   return (
     <div>
-      <div key={habitDetailState._id}>
-        <h3>{habitDetailState.habitname}</h3>
-        <h3>{habitDetailState.description}</h3>
-        <h3>{habitDetailState.categories}</h3> 
+      <section className="section">
+<div className="container">
+  <div className="columns is-centered">
+    <div className="column is-auto">
+    <div className="card">
+      <div className="card-content" key={habitDetailState._id}>
+        <h3 className="subtitle is-4 has-text-weight-semibold">{habitDetailState.habitname}</h3>
+        <h3 className="content">{habitDetailState.description}</h3>
+        <h3 className="content">{habitDetailState.categories}</h3> 
     </div>
+    <div className="card-content">
     <MyHabitButton
           theHabit={habitDetailState}
           getOneHabit={getOneHabit}
           {...props}
-        />      </div>
+          
+        />  </div>
+    </div>
+    </div>
+  </div>
+</div>
+</section>
+    </div>
+
+    
     
   );
 }

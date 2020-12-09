@@ -19,8 +19,11 @@ function MyHabitButton(props) {
       .catch((error) => console.error(error));
   }
   return (
+
+
+    
     <div>
-      <button onClick={addToMyHabits}>Add to myHabits</button>
+      <button className="button is-danger is-rounded" onClick={addToMyHabits}>Add to myHabits</button>
     </div>
   );
 }

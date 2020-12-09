@@ -5,15 +5,11 @@ import { Link } from "react-router-dom";
 
 function MyHabits(props) {
   const [myHabitsState, setMyHabits] = useState([]);
-  //   console.log(props.loggedInUser)
-  //   const user = props.loggedInUser
-  //  const userId = props.loggedInUser._id || null //id van user
 
   function getMyHabits() {
     axios
       .get(
         "http://localhost:5000/api/my-habits",
-        // { userId },
         { withCredentials: true }
       )
       .then((userFromDB) => {
@@ -26,23 +22,55 @@ function MyHabits(props) {
   useEffect(getMyHabits, []);
   return (
     <div>
-      <div>
-        <h1>My Habits</h1>
-      </div>
+    <section className="section">
+<div className="container">
+  <div className="columns is-centered">
+    <div className="column is-auto">
+    <div>
+    <h1 className="title is-1 is-family-code">My Habits</h1>
+      </div> 
+      <br></br>
+      <div className="columns is-multiline">
       {myHabitsState.map((oneMyHabit) => {
         return (
-          <div key={oneMyHabit._id}>
-            <h1>{oneMyHabit.habitname}</h1>
-            <p>{oneMyHabit.description}</p>
-            <p>{oneMyHabit.categories}</p>
-            <Link to={`/explore/${oneMyHabit._id}`}>
-              <h3>See more</h3>
-            </Link>
-          </div>
+                  <div class="column is-one-third">
+                    <div className="card">
+                      <div className="card-content" key={oneMyHabit._id}>
+                        <h3 className="subtitle is-4 has-text-weight-semibold">
+                          {oneMyHabit.habitname}{" "}
+                        </h3>
+                        <p className="content">{oneMyHabit.description} </p>
+                        <p className="content">{oneMyHabit.categories} </p>
+                        <br></br>
+                        <footer className="card-footer">
+                          <Link
+                            className="card-footer-item"
+                            to={`/explore/${oneMyHabit._id}`}
+                          >
+                            <h3 className="button is-danger is-rounded">See more</h3>
+                          </Link>
+                        </footer>
+                      </div>
+                    </div>
+                  </div>
         );
-      })}
+      })}</div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+
+
+    
+ 
     </div>
   );
 }
+
+
+
 
 export default MyHabits;

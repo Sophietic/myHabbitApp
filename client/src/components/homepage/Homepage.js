@@ -7,10 +7,11 @@ function Homepage() {
       <div className="container">
         <div className="columns is-centered">
           <div class="column is-auto">
-            <h1 className="title is-1 is-family-code">
+          <div className="card">
+            <h1 className="title is-1 is-family-code card-content">
               Welcome, this is the homepage
             </h1>
-            <p>
+            <p className="card-content">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -19,6 +20,7 @@ function Homepage() {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
+            </div>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import "bulma/css/bulma.css";
 function Footer() {
   return (
     <footer className="footer">
-      {/* <div class="content has-text-centered"> */}
+      <div class="content has-text-centered"> 
       <p>
         <strong>Copyright © 2020 </strong>
         <a className="has-text-danger" href="https://github.com/Sophietic">
@@ -13,7 +13,7 @@ function Footer() {
         </a>{" "}
         <strong>All Rights Reserved</strong>
       </p>
-      {/* </div> */}
+      </div>
     </footer>
   );
 }

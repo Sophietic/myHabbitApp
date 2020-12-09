@@ -21,18 +21,18 @@ function HabitList() {
 
   return (
     <div>
-    <section class="section">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-auto">
-            <h1 className="title is-1 is-family-code">Explore all habits</h1>
+      <section className="section">
+<div className="container">
+  <div className="columns is-centered">
+    <div className="column is-auto">
+    <h1 className="title is-1 is-family-code">Explore all habits</h1>
+         <div className="columns is-multiline">
             {listState.map((habit) => {
               return (
-                <div class="columns is-multiline">
-                  <div class="column is-one-quarter">
+                  <div class="column is-one-third">
                     <div className="card">
                       <div className="card-content" key={habit._id}>
-                        <h3 className="subtitle is-6 has-text-weight-semibold">
+                        <h3 className="subtitle is-4 has-text-weight-semibold">
                           {habit.habitname}{" "}
                         </h3>
                         <p className="content">{habit.description} </p>
@@ -43,25 +43,22 @@ function HabitList() {
                             className="card-footer-item"
                             to={`/explore/${habit._id}`}
                           >
-                            <h3>See more</h3>
+                            <h3 className="button is-danger is-rounded">See more</h3>
                           </Link>
                         </footer>
                       </div>
                     </div>
                   </div>
-                </div>
               );
-            })}
-          </div>
-        </div>
-      </div>
-     
-    </section>
-    <div>
-        <Footer />
-      </div>
+            })}</div>
+    </div>
+  </div>
+</div>
+</section>
       </div>
   );
 }
+
+
 
 export default HabitList;
