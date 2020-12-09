@@ -34,54 +34,65 @@ function Signup(props) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1 className="title">Sign Up</h1>
-        <div className="field">
-          <label className="label is-medium" htmlFor="email">
-            Email Address
-          </label>
-          <div className="control">
-            <input
-              name="email"
-              type="text"
-              value={formState.email}
-              onChange={handleChange}
-              className="input"
-              placeholder="Please provide your email address"
-            />
-          </div>
-        </div>
+    <section className="section">
+      <div className="container">
+        <div className="columns is-centered">
+          <div className="column is-auto">
+            <div className="card">
+              <form className="card-content" onSubmit={handleSubmit}>
+                <h1 className="title is-1 is-family-code">Sign Up</h1>
+                <div className="field">
+                  <label className="label is-medium" htmlFor="email">
+                    Email Address
+                  </label>
+                  <div className="control">
+                    <input
+                      name="email"
+                      type="text"
+                      value={formState.email}
+                      onChange={handleChange}
+                      className="input"
+                      placeholder="Please provide your email address"
+                    />
+                  </div>
+                </div>
 
-        <div className="field">
-          <label className="label is-medium" htmlFor="password">
-            Password
-          </label>
-          <div className="control">
-            <input
-              name="password"
-              type="text"
-              value={formState.password}
-              onChange={handleChange}
-              className="input"
-              placeholder="Please provide your password"
-            />
+                <div className="field">
+                  <label className="label is-medium" htmlFor="password">
+                    Password
+                  </label>
+                  <div className="control">
+                    <input
+                      name="password"
+                      type="text"
+                      value={formState.password}
+                      onChange={handleChange}
+                      className="input"
+                      placeholder="Please provide your password"
+                    />
+                  </div>
+                </div>
+                <div className="control card-content">
+                  <button
+                    className="button is-danger is-rounded"
+                    type="submit"
+                    value="Signup"
+                  >
+                    Sign up
+                  </button>
+                </div>
+              </form>
+              <br></br>
+              <footer className="card-footer">
+                <p className="card-footer-item">
+                  Already have an account? <Link to={"/login"}> Log In</Link>{" "}
+                </p>
+              </footer>
+            </div>
           </div>
         </div>
-        <div className="control">
-          <button
-            className="button is-danger is-rounded"
-            type="submit"
-            value="Signup"
-          >
-            Sign up
-          </button>
-        </div>
-      </form>
-      <p>
-        Already have an account? <Link to={"/login"}> Log In</Link>{" "}
-      </p>
-    </div>
+      </div>
+    </section>
   );
 }
 

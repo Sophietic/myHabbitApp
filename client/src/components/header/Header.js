@@ -46,9 +46,7 @@ function Header(props){
                     </a>
                     </div>
                     <div class="navbar-end">
-                   
-                     <div class="navbar-item"><button onClick={logOut}>Logout</button></div>
-
+                     <div><button className="button is-danger" onClick={logOut}>Logout</button></div>
                         <div class="navbar-item">
                             <div class="field is-grouped"></div>
                         </div>

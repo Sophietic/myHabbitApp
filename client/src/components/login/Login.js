@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Login.css";
 import AuthService from "../../services/auth.service.js";
 import "bulma/css/bulma.css";
+import { Link } from "react-router-dom";
+
 //https://bulma.io/documentation/form/general/
 const initialState = {
   email: "",
@@ -35,9 +37,13 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1 className="title">Log in</h1>
+    <section className="section">
+<div className="container">
+  <div className="columns is-centered">
+    <div className="column is-auto">
+    <div className="card">
+      <form className="card-content" onSubmit={handleSubmit}>
+        <h1 className="title is-1 is-family-code">Log in</h1>
         <div className="field">
           <label className="label is-medium" htmlFor="email">
             Email Address
@@ -69,14 +75,24 @@ function Login(props) {
             />
           </div>
         </div>
-        <div className="control">
+        <div className="control card-content">
           <button className="button is-danger" type="submit" value="Login">
             Log in
           </button>
         </div>
       </form>
-      {errorState && <span>{errorState}</span>}
+      <br></br>
+      <footer className="card-footer">
+      <p className="card-footer-item">
+        Already have an account? <Link to={"/login"}> Log In</Link>{" "}
+      </p>
+      </footer>
     </div>
+    </div>
+  </div>
+</div>
+ {errorState && <span>{errorState}</span>}
+</section> 
   );
 }
 

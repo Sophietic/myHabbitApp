@@ -10,7 +10,7 @@ import HabitList from "./components/habitList/HabitList";
 import HabitDetails from "./components/habitDetails/HabitDetails";
 import AuthService from "./services/auth.service.js";
 import MyHabits from "./components/myHabit/myHabit";
-import Footer from "./components/footer/Footer";
+// import Footer from "./components/footer/Footer";
 
 function App() {
   //is gebruiker ingelogd of niet?
@@ -42,26 +42,48 @@ function App() {
     //wel ingelogd
     return (
       <div>
-        <Header
+           <Header
           userInSession={loggedInUser}
           getLoggedInUser={getLoggedInUser}
         />
-        <Switch>
-          <Route exact path="/" component={() => <Homepage loggedInUser={loggedInUser}/>} />
-      <Route path="/signup" component={() => <Signup getLoggedInUser={getLoggedInUser}/>} />
-      <Route path="/login" component={() => <Login getLoggedInUser={getLoggedInUser}/>} />
-      <Route path="/create" component={AddHabit} />
-      <Route exact path="/explore" component={HabitList} />
-      <Route exact path="/explore/:id" component={(props) => <HabitDetails {...props} user={loggedInUser}/>} />
-      <Route exact path="/my-habits" component={(props) => <MyHabits {...props} loggedInUser={loggedInUser}/>}/>
-      </Switch>
 
+      <div className="main-container">
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => <Homepage loggedInUser={loggedInUser} />}
+          />
+          {/* <Route path="/signup" component={() => <Signup getLoggedInUser={getLoggedInUser}/>} />
+      <Route path="/login" component={() => <Login getLoggedInUser={getLoggedInUser}/>} /> */}
+          <Route path="/create" component={AddHabit} />
+          <Route exact path="/explore" component={HabitList} />
+          <Route
+            exact
+            path="/explore/:id"
+            component={(props) => (
+              <HabitDetails {...props} user={loggedInUser} />
+            )}
+          />
+          <Route
+            exact
+            path="/my-habits"
+            component={(props) => (
+              <MyHabits {...props} loggedInUser={loggedInUser} />
+            )}
+          />
+        </Switch>
       </div>
-    )
+{/*      
+        <div className="footer">
+          <Footer />
+        </div> */}
+      </div>
+    );
   } else {
     //niet ingelogd
     return (
-      <div className="App">
+      <div>
         <Header
           userInSession={loggedInUser}
           getLoggedInUser={getLoggedInUser}
@@ -88,13 +110,10 @@ function App() {
               <HabitDetails {...props} user={loggedInUser} />
             )}
           />
-          <Route
-            exact
-            path="/my-habits"
-            component={(props) => <MyHabits {...props} loggedInUser={loggedInUser} />}
-          />
         </Switch>
-        <Footer />
+        {/* <div className="footer">
+          <Footer />
+        </div> */}
       </div>
     );
   }

@@ -15,7 +15,7 @@ require("./configs/passport.configs");
 // process.env.MONGO_ATLAS_URI || 
 
 mongoose
-  .connect("mongodb://localhost/server", {
+  .connect(process.env.MONGO_ATLAS_URI|| "mongodb://localhost/server", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
