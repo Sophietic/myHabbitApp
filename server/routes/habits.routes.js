@@ -68,12 +68,12 @@ router.post("/explore/:id", (req, res) => {
 
 ///show only my habits
 router.get("/my-habits", (req, res) => {
-const userId = req.user._id;
+  const userId = req.user._id;
 
   User.findById(userId)
       .populate('myHabits')
-      .then((habitFromDB) => {
-        res.status(200).json(habitFromDB);
+      .then((UserFromDB) => {
+        res.status(200).json(UserFromDB);
       })
       .catch((error) => {
         console.log(error);

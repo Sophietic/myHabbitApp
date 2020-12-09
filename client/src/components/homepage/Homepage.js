@@ -6,7 +6,6 @@ function Homepage(props) {
   return (
     <div className="homepage">
       <h1>Welcome, this is the homepage</h1>
-      <Footer />
     </div>
   );
 }
