@@ -16,9 +16,13 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    dailyStreak: {
+      type: Number
+    },
     myHabits: [
       { type: Schema.Types.ObjectId,
-       ref: 'Habit' }
+       ref: 'Habit' },
+       { timestamps: true }
       ],
   },
   { timestamps: true }
