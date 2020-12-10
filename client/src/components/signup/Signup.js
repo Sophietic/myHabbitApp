@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import AuthService from "../../services/auth.service.js";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "bulma/css/bulma.css";
 
 const initialState = {
@@ -10,7 +10,9 @@ const initialState = {
 };
 
 function Signup(props) {
+  let history = useHistory();
   const [formState, setForm] = useState(initialState);
+  const [errorState, setError] = useState("");
   const service = new AuthService();
 
   function handleChange(event) {
@@ -29,8 +31,13 @@ function Signup(props) {
       .then((response) => {
         setForm(initialState);
         props.getLoggedInUser(response);
+        history.push("/my-habits")
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        const { message } = error.response.data;
+        setError(message);
+      });
   }
 
   return (
@@ -64,7 +71,7 @@ function Signup(props) {
                   <div className="control">
                     <input
                       name="password"
-                      type="text"
+                      type="password"
                       value={formState.password}
                       onChange={handleChange}
                       className="input"
@@ -72,6 +79,7 @@ function Signup(props) {
                     />
                   </div>
                 </div>
+                <div className="has-text-danger">{errorState && <span>{errorState}</span>}</div>
                 <div className="control card-content">
                   <button
                     className="button is-danger is-rounded"

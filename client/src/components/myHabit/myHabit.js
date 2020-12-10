@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bulma/css/bulma.css";
 import { Link } from "react-router-dom";
-import moment from 'moment';
+// import moment from 'moment';
 
 
 function MyHabits(props) {
   const [myHabitsState, setMyHabits] = useState([]);
-  const [runStreak, setRunStreak] = useState(0);
-  let longestRunStreakArray = [];
-  let oneRunStreak = 0;
-  const currentTime = moment().unix()
+  // const [runStreak, setRunStreak] = useState(0);
+  // let longestRunStreakArray = [];
+  // let oneRunStreak = 0;
+  // const currentTime = moment().unix()
 
   function getMyHabits() {
     axios
@@ -50,7 +50,7 @@ function MyHabits(props) {
 
   useEffect(getMyHabits, []);
 
-
+// if(myHabitsState === null)
   return (
     <div>
     <section className="section">
@@ -75,14 +75,14 @@ function MyHabits(props) {
                         <p className="content">{oneMyHabit.description} </p>
                         <p className="content">{oneMyHabit.categories} </p>
                         <br></br>
-                        <footer className="card-footer">
+                        {/* <footer className="card-footer">
                           <Link
                             className="card-footer-item"
                             to={`/explore/${oneMyHabit._id}`}
                           >
                             <h3 className="button is-danger is-rounded">See more</h3>
                           </Link>
-                        </footer>
+                        </footer> */}
                       </div>
                     </div>
                   </div>
@@ -92,13 +92,6 @@ function MyHabits(props) {
   </div>
 </div>
 </section>
-
-
-
-
-
-    
- 
     </div>
   );
 }

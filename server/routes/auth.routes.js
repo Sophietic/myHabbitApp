@@ -17,6 +17,19 @@ router.post("/signup", (req, res, next) => {
       .json({ message: "Please provide both your email address and password" });
     return;
   }
+
+  // if (password.length < 9) {
+  //   res.status(400).json({message:"For security purposes, you password needs to be at least 10 characters"});
+  //   return;
+  // }
+  // const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  // if (!regex.test(password)) {
+  //   res
+  //     .status(500)
+  //     .render('auth/signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
+  //   return;
+  // }
+
   User.findOne({ email }).then((user) => {
     if (user !== null) {
       res
