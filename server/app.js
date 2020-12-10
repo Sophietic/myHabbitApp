@@ -99,16 +99,12 @@ app.use("/api", router);
 const habits = require("./routes/habits.routes");
 app.use("/api", habits);
 
-// Setting up environments
-if (process.env.NODE_ENV === "production") {
-  // set ability to get static values from client build folder
-  // static files include all javascript and css files
-  app.use(express.static("client/build"));
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
 
-  // get the index.html that will be rendered on the browser
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "../client", "build", "index.html"));
+  app.get('*', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-module.exports = app;
