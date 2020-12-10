@@ -46,6 +46,9 @@ function Header(props){
                     </a>
                     </div>
                     <div class="navbar-end">
+                    <a class="navbar-item" href="/my-habits">
+                        MyHabits
+                    </a>
                      <div><button className="button is-danger" onClick={logOut}>Logout</button></div>
                         <div class="navbar-item">
                             <div class="field is-grouped"></div>
