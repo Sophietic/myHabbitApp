@@ -37,7 +37,7 @@ require("./configs/passport.configs");
 // NODE_ENV === "development" ? connectDb(MONGO_LOCAL) : connectDb(MONGO_ATLAS);
 
 mongoose
-  .connect(process.env.MONGO_ATLAS_URI|| "mongodb://localhost/server", {
+  .connect(process.env.MONGO_ATLAS|| "mongodb://localhost/server", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -61,8 +61,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000"], //address of the new place goes here
-    //origin: ["http://localhost:3000", "netlifyblablab"]
+    origin: ["http://localhost:3000"],
     credentials: true,
   })
 );
