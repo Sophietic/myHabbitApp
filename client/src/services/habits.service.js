@@ -10,7 +10,7 @@ class HabitService {
 
   // Method to retrieve all projects
   getlist = () => {
-    return this.service.get("/api/explore").then((response) => response);
+    return this.service.get("/api/explore").then((response) => response.data);
   };
 
   
