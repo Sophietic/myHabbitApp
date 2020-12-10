@@ -10,7 +10,7 @@ function HabitList() {
   //callbackfunction
   function getAllHabits() {
     axios
-      .get("http://localhost:5000/api/explore")
+      .get("https://myhabitapp.herokuapp.com/api/explore")
       .then((habitsFromApi) => {
         setList(habitsFromApi.data);
       })
