@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bulma/css/bulma.css";
 import { Link } from "react-router-dom";
-import Footer from ".././footer/Footer";
 import HabitService from "../../services/habits.service.js";
 
 function HabitList() {
   const [listState, setList] = useState([]);
-  const service = new HabitService();
 
   //callbackfunction
   function getAllHabits() {
+    const service = new HabitService();
+
     service
       .getlist()
       .then((habitsFromApi) => {
