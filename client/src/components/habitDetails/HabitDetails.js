@@ -37,12 +37,12 @@ function HabitDetails(props) {
         <section className="section">
   <div className="container">
     <div className="columns is-centered">
-      <div className="column is-auto">
+      <div className="column is-half">
       <div className="card">
         <div className="card-content" key={habitDetailState._id}>
-          <h3 className="subtitle is-4 has-text-weight-semibold">{habitDetailState.habitname}</h3>
-          <h3 className="content">{habitDetailState.description}</h3>
-          <h3 className="content">{habitDetailState.categories}</h3> 
+          <h3 className="title is-1 is-family-code">{habitDetailState.habitname}</h3>
+          <p className="content">{habitDetailState.description}</p>
+          <p className="content"><strong>Category:</strong> {habitDetailState.categories}</p> 
       </div>
       <div className="card-content">
       <MyHabitButton
