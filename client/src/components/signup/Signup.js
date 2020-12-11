@@ -44,7 +44,7 @@ function Signup(props) {
     <section className="section">
       <div className="container">
         <div className="columns is-centered">
-          <div className="column is-auto">
+          <div className="column is-half">
             <div className="card">
               <form className="card-content" onSubmit={handleSubmit}>
                 <h1 className="title is-1 is-family-code">Sign Up</h1>

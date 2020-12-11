@@ -37,7 +37,7 @@ require("./configs/passport.configs");
 // NODE_ENV === "development" ? connectDb(MONGO_LOCAL) : connectDb(MONGO_ATLAS);
 
 mongoose
-  .connect(process.env.MONGO_ATLAS|| "mongodb://localhost/server", {
+  .connect(process.env.MONGO_ATLAS, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -106,11 +106,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
   // get the index.html that will be rendered on the browser
-  app.get("/", (req, res) => {
+  app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname + "../client", "build", "index.html"));
-  });
-  app.get("/explore", (req, res) => {
-    res.sendFile(path.join(  "./app/client", "build", "index.html"));
   });
 }
 

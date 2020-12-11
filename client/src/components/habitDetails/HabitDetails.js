@@ -3,6 +3,7 @@ import axios from "axios";
 import "bulma/css/bulma.css";
 import "./HabitDetails.css";
 import MyHabitButton from ".././myHabbitButton/myHabitButton";
+import HabitService from "../../services/habits.service.js";
 
 
 const initialState = {
@@ -17,12 +18,12 @@ function HabitDetails(props) {
   const loggedInUser = props.loggedInUser
   
   function getOneHabit() {
-    const { id } = props.match.params;
 
-    axios
-      .get(`http://localhost:5000/api/explore/${id}`, {
-        withCredentials: true,
-      })
+    const { id } = props.match.params;
+    const service = new HabitService();
+
+    service
+    .getonehabit(id)
       .then((habitFromApi) => {
         setHabitDetail(habitFromApi.data);
       })

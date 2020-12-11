@@ -2,19 +2,22 @@ import React from "react";
 import axios from "axios";
 import "bulma/css/bulma.css";
 import { useHistory, Link } from "react-router-dom";
+import HabitService from "../../services/habits.service.js";
+import { summary } from 'date-streaks';
+
+
 
 function MyHabitButton(props) {
+ 
   let history = useHistory();
   function addToMyHabits() {
+  
     const { id } = props.match.params; //id van habit
     const { userId } = props.user._id; //id van user
+    const service = new HabitService();
 
-    axios
-      .post(
-        `http://localhost:5000/api/explore/${id}`,
-        { userId },
-        { withCredentials: true }
-      )
+    service
+    .addMyHabits(id)
       .then(() => {
         history.push("/my-habits");
       })
