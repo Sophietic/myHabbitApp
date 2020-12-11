@@ -12,7 +12,6 @@ const initialState = {
 function AddHabit() {
   const [formState, setForm] = useState(initialState);
 
-
   function handleChange(event) {
     const { name, value } = event.target;
     setForm({ ...formState, [name]: value });
@@ -22,9 +21,8 @@ function AddHabit() {
     event.preventDefault();
     const service = new HabitService();
 
-    // const { habitname, description, categories } = formState;
- service
-      .createProject( {
+    service
+      .createProject({
         habitname: formState.habitname,
         description: formState.description,
         categories: formState.categories,

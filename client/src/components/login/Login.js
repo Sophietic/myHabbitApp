@@ -4,7 +4,6 @@ import AuthService from "../../services/auth.service.js";
 import "bulma/css/bulma.css";
 import { Link, useHistory } from "react-router-dom";
 
-//https://bulma.io/documentation/form/general/
 const initialState = {
   email: "",
   password: "",
@@ -29,7 +28,7 @@ function Login(props) {
       .then((response) => {
         setLogin(initialState);
         props.getLoggedInUser(response);
-        history.push("/my-habits")
+        history.push("/my-habits");
       })
       .catch((error) => {
         console.log(error);

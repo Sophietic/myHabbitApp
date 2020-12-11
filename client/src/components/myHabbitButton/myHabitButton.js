@@ -3,41 +3,39 @@ import axios from "axios";
 import "bulma/css/bulma.css";
 import { useHistory, Link } from "react-router-dom";
 import HabitService from "../../services/habits.service.js";
-import { summary } from 'date-streaks';
-
-
+import { summary } from "date-streaks";
 
 function MyHabitButton(props) {
- 
   let history = useHistory();
   function addToMyHabits() {
-  
-    const { id } = props.match.params; //id van habit
-    const { userId } = props.user._id; //id van user
+    const { id } = props.match.params; 
+    const { userId } = props.user._id; 
     const service = new HabitService();
 
     service
-    .addMyHabits(id)
+      .addMyHabits(id)
       .then(() => {
         history.push("/my-habits");
       })
       .catch((error) => console.error(error));
   }
 
-  if(props.user){
-  return (
-    <div>
-      <button className="button is-danger is-rounded" onClick={addToMyHabits}>
-        Add to myHabits
-      </button>
-    </div>
-  )}else{
-    return(
-    <Link to="/signup">
-    <button className="button is-danger is-rounded" type="button">
-         Add to myHabits
-    </button>
-  </Link>)
+  if (props.user) {
+    return (
+      <div>
+        <button className="button is-danger is-rounded" onClick={addToMyHabits}>
+          Add to myHabits
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <Link to="/signup">
+        <button className="button is-danger is-rounded" type="button">
+          Add to myHabits
+        </button>
+      </Link>
+    );
   }
 }
 

@@ -30,7 +30,6 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 
-
 // Middleware Setup
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -73,10 +72,15 @@ app.use("/api", router);
 const habits = require("./routes/habits.routes");
 app.use("/api", habits);
 
-app.use('/static', express.static(path.join(__dirname, '../client/build/static')));
-app.use('/', express.static(path.join(__dirname, '../client/build/')));
-app.get('*', function(request, response) {
-  response.sendFile('index.html', {root: path.join(__dirname, '../client/build/')});
+app.use(
+  "/static",
+  express.static(path.join(__dirname, "../client/build/static"))
+);
+app.use("/", express.static(path.join(__dirname, "../client/build/")));
+app.get("*", function (request, response) {
+  response.sendFile("index.html", {
+    root: path.join(__dirname, "../client/build/"),
+  });
 });
 
 module.exports = app;

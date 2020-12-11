@@ -5,7 +5,6 @@ import "./HabitDetails.css";
 import MyHabitButton from ".././myHabbitButton/myHabitButton";
 import HabitService from "../../services/habits.service.js";
 
-
 const initialState = {
   _id: " ",
   habitname: " ",
@@ -15,15 +14,14 @@ const initialState = {
 
 function HabitDetails(props) {
   const [habitDetailState, setHabitDetail] = useState(initialState);
-  const loggedInUser = props.loggedInUser
-  
-  function getOneHabit() {
+  const loggedInUser = props.loggedInUser;
 
+  function getOneHabit() {
     const { id } = props.match.params;
     const service = new HabitService();
 
     service
-    .getonehabit(id)
+      .getonehabit(id)
       .then((habitFromApi) => {
         setHabitDetail(habitFromApi.data);
       })
@@ -32,34 +30,36 @@ function HabitDetails(props) {
 
   useEffect(getOneHabit, [props.match.params]);
 
-    return (
-      <div>
-        <section className="section">
-  <div className="container">
-    <div className="columns is-centered">
-      <div className="column is-half">
-      <div className="card">
-        <div className="card-content" key={habitDetailState._id}>
-          <h3 className="title is-1 is-family-code">{habitDetailState.habitname}</h3>
-          <p className="content">{habitDetailState.description}</p>
-          <p className="content"><strong>Category:</strong> {habitDetailState.categories}</p> 
-      </div>
-      <div className="card-content">
-      <MyHabitButton
-            theHabit={habitDetailState}
-            getOneHabit={getOneHabit}
-            {...props}
-            
-          />  </div>
-      </div>
-      </div>
+  return (
+    <div>
+      <section className="section">
+        <div className="container">
+          <div className="columns is-centered">
+            <div className="column is-half">
+              <div className="card">
+                <div className="card-content" key={habitDetailState._id}>
+                  <h3 className="title is-1 is-family-code">
+                    {habitDetailState.habitname}
+                  </h3>
+                  <p className="content">{habitDetailState.description}</p>
+                  <p className="content">
+                    <strong>Category:</strong> {habitDetailState.categories}
+                  </p>
+                </div>
+                <div className="card-content">
+                  <MyHabitButton
+                    theHabit={habitDetailState}
+                    getOneHabit={getOneHabit}
+                    {...props}
+                  />{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
-  </section>
-      </div>
-    );
-  }
-  
-
+  );
+}
 
 export default HabitDetails;
