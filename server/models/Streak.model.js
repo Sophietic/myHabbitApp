@@ -4,16 +4,16 @@ const { Schema, model } = mongoose;
 const streakSchema = new Schema(
   {    
     owner: {
-      type: String
+      type: String,
     }, 
     ownHabit: {
-      type: String
+      type: String,
     }, 
       dayCompleted: {
-        type: [Date],
+        type: Date,
       },
   },
   { timestamps: true }
 );
 
-module.exports = model("Streak", streakSchema);
+module.exports = model('Streak', streakSchema);

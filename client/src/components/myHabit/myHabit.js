@@ -5,6 +5,7 @@ import HabitService from "../../services/habits.service.js";
 import { summary } from 'date-streaks';
 
 
+
 function MyHabits(props) {
   const [myHabitsState, setMyHabits] = useState([]);
 
@@ -17,7 +18,7 @@ function MyHabits(props) {
     service
       .myHabits()
       .then((userFromDB) => {
-      
+  
         setMyHabits(userFromDB.data.myHabits); 
       })
       
@@ -35,6 +36,7 @@ function MyHabits(props) {
     <div>
     <h1 className="title is-1 is-family-code">My Habits</h1>
       </div> 
+      <h4><Link to={"/explore"}> Explore</Link>{" "}the habits that will change your life </h4>
       <br></br>
       <div className="columns is-multiline">
       {myHabitsState.map((oneMyHabit) => {
@@ -48,7 +50,7 @@ function MyHabits(props) {
                         <p className="content">{oneMyHabit.streaks} </p>
 
                         <p className="content">{oneMyHabit.description} </p>
-                        <p className="content">{oneMyHabit.categories} </p>
+                        <p className="content"><strong>Category:</strong> {oneMyHabit.categories} </p>
                         <br></br>
                         <footer className="card-footer">
                           <Link

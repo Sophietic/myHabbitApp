@@ -11,7 +11,7 @@ function MyStreakButton(props) {
   //console.log(props.user.streaks)
   let history = useHistory();
   function addToMyStreaks() {
-  
+
     const { id } = props.match.params; //id van habit
     const { userId } = props.user._id; //id van user
     const service = new HabitService();

@@ -72,7 +72,7 @@ router.get("/my-habits", (req, res) => {
   const userId = req.user._id;
 
   User.findById(userId)
-      .populate('streaks myHabits')
+      .populate('myHabits')
       .then((UserFromDB) => {
         res.status(200).json(UserFromDB);
       })
@@ -88,6 +88,7 @@ router.get('/my-habits/:id', (req, res) => {
   const {id} = req.params;
 
   Habit.findById(id)
+  .populate('streaks')
   .then((habitFromDB) => {
     res.status(200).json(habitFromDB);
   })
@@ -100,18 +101,15 @@ router.get('/my-habits/:id', (req, res) => {
 //add day to streak
 router.post("/my-habits/:id", (req, res) => {
   const { id } = req.params;
-  const habitId = id 
-  const userId = req.user._id;
-  // const habitId = "5fd0d1de99d64b373e0de067"
+  // const habitId = id 
+  // const userId = req.user._id;
+  const habitId = "5fd0d1de99d64b373e0de067"
   // const userId = "5fd35a9b3af6a81726914172"
   const today = new Date();
 
-  console.log(today)
-  console.log(habitId)
-  console.log(userId)
   
   Streak.findOneAndUpdate(
-  habitId,
+ habitId,
     {$push: {dayCompleted: [today]}}
       // { dayCompleted: today},
     )
