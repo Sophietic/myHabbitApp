@@ -23,15 +23,13 @@ function Signup(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    //pak de nieuwe waarden uit de formstate zodat je die met service naar backend kan sturen
     const { email, password } = formState;
-    // met service hadden we een signup methode zodat je naar de signup route van de backend kan gaan
     service
       .signup(email, password)
       .then((response) => {
         setForm(initialState);
         props.getLoggedInUser(response);
-        history.push("/my-habits")
+        history.push("/my-habits");
       })
       .catch((error) => {
         console.log(error);
@@ -79,7 +77,9 @@ function Signup(props) {
                     />
                   </div>
                 </div>
-                <div className="has-text-danger">{errorState && <span>{errorState}</span>}</div>
+                <div className="has-text-danger">
+                  {errorState && <span>{errorState}</span>}
+                </div>
                 <div className="control card-content">
                   <button
                     className="button is-danger is-rounded"
