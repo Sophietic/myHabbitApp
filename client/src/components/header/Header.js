@@ -27,7 +27,7 @@ function Header(props){
         <nav class="navbar is-danger">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="./logo192.png" alt="Sophies website" width="112" height="28" />
+            <img src=".././favicon.ico"  alt="Sophies website"  />
             </a>
                 <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
                     <span></span>
@@ -63,7 +63,7 @@ function Header(props){
         <nav class="navbar is-danger">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="./logo192.png" alt="Sophies website" width="112" height="28" />
+                <img src=".././favicon.ico"  alt="Sophies website"  />
             </a>
                 <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
                     <span></span>

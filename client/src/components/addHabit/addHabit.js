@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./addHabit.css";
-import axios from "axios";
 import "bulma/css/bulma.css";
+import HabitService from "../../services/habits.service.js";
 
 const initialState = {
   habitname: "",
@@ -12,6 +12,7 @@ const initialState = {
 function AddHabit() {
   const [formState, setForm] = useState(initialState);
 
+
   function handleChange(event) {
     const { name, value } = event.target;
     setForm({ ...formState, [name]: value });
@@ -19,9 +20,11 @@ function AddHabit() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const service = new HabitService();
+
     // const { habitname, description, categories } = formState;
-    axios
-      .post("http://localhost:5000/api/create", {
+ service
+      .createProject( {
         habitname: formState.habitname,
         description: formState.description,
         categories: formState.categories,

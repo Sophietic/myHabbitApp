@@ -14,9 +14,12 @@ const habitSchema = new Schema(
       type: String,
       enum: ["Nutrition", "Energy", "Sleep"],
     },
-    // streak: {
-    //     type: Number,
-    //   },
+    streaks: [
+      { type: Schema.Types.ObjectId,
+       ref: 'Streak' },
+       { timestamps: true }
+      ],
+    
   },
   { timestamps: true }
 );

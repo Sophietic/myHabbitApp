@@ -1,48 +1,24 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "bulma/css/bulma.css";
 import { Link } from "react-router-dom";
-// import moment from 'moment';
+import HabitService from "../../services/habits.service.js";
+import { summary } from 'date-streaks';
 
 
 function MyHabits(props) {
   const [myHabitsState, setMyHabits] = useState([]);
-  // const [runStreak, setRunStreak] = useState(0);
-  // let longestRunStreakArray = [];
-  // let oneRunStreak = 0;
-  // const currentTime = moment().unix()
+
+  console.log(myHabitsState)
 
   function getMyHabits() {
-    axios
-      .get(
-        "http://localhost:5000/api/my-habits",
-        { withCredentials: true }
-      )
+    const service = new HabitService();
+
+
+    service
+      .myHabits()
       .then((userFromDB) => {
-        setMyHabits(userFromDB.data.myHabits);    
-        //logic to work out current runstreak
-// function currentRunStreakCalc(){
-//         for(let i = 0; i < userFromDB.data.myHabits.length; i++) {
-//           if (userFromDB.data[i+1] !== undefined) { 
-//             // oneRunStreak = 1;
-//             const prevUpdated = Date.parse(userFromDB.data[i].myHabits.updatedAt)
-//             const currentUpdated = Date.parse(userFromDB.data[i+1].myHabits.updatedAt)
       
-//             if (prevUpdated !== Date.parse(userFromDB.data[i].myHabits.createdAt)) {
-//               if(currentTime - prevUpdated < 86400) { //defines current run streak: within the day
-//                 if(currentUpdated - prevUpdated < 86400) {
-//                   //for every session completed in a 24hr window, add 1 to the runStreak. 
-//                   oneRunStreak++;
-//                 }  else {
-//                     //else break the run streak, push it to array, and start again at 1.
-//                     longestRunStreakArray.push(oneRunStreak);
-//                     oneRunStreak = 0;
-//                   }
-//               }  
-//             }
-//         }}}
-//         //logic to work out current runstreak
-//         currentRunStreakCalc(userFromDB.data.myHabits, setRunStreak);
+        setMyHabits(userFromDB.data.myHabits); 
       })
       
       .catch((error) => console.log(error));
@@ -50,7 +26,6 @@ function MyHabits(props) {
 
   useEffect(getMyHabits, []);
 
-// if(myHabitsState === null)
   return (
     <div>
     <section className="section">
@@ -70,19 +45,19 @@ function MyHabits(props) {
                         <h3 className="subtitle is-4 has-text-weight-semibold">
                           {oneMyHabit.habitname}{" "}
                         </h3>
-                        <p className="content">{oneMyHabit.dailyStreak} </p>
+                        <p className="content">{oneMyHabit.streaks} </p>
 
                         <p className="content">{oneMyHabit.description} </p>
                         <p className="content">{oneMyHabit.categories} </p>
                         <br></br>
-                        {/* <footer className="card-footer">
+                        <footer className="card-footer">
                           <Link
                             className="card-footer-item"
-                            to={`/explore/${oneMyHabit._id}`}
+                            to={`/my-habits/${oneMyHabit._id}`}
                           >
                             <h3 className="button is-danger is-rounded">See more</h3>
                           </Link>
-                        </footer> */}
+                        </footer> 
                       </div>
                     </div>
                   </div>

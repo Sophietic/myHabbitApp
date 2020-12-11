@@ -11,6 +11,8 @@ import HabitDetails from "./components/habitDetails/HabitDetails";
 import AuthService from "./services/auth.service.js";
 import MyHabits from "./components/myHabit/myHabit";
 import Footer from "./components/footer/Footer";
+import DetailMyHabit from "./components/Detaildmyhabit/Detailmyhabit";
+
 
 function App() {
   //is gebruiker ingelogd of niet?
@@ -68,6 +70,13 @@ function App() {
               path="/my-habits"
               component={(props) => (
                 <MyHabits {...props} loggedInUser={loggedInUser} />
+              )}
+            />
+               <Route
+              exact
+              path="/my-habits/:id"
+              component={(props) => (
+                <DetailMyHabit {...props} user={loggedInUser} />
               )}
             />
           </Switch>
