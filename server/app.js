@@ -37,7 +37,7 @@ require("./configs/passport.configs");
 // NODE_ENV === "development" ? connectDb(MONGO_LOCAL) : connectDb(MONGO_ATLAS);
 
 mongoose
-  .connect(process.env.MONGO_ATLAS, {
+  .connect(process.env.MongoDB_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
