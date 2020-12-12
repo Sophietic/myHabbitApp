@@ -5,6 +5,7 @@ import "bulma/css/bulma.css";
 
 function Header(props) {
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [isActive, setisActive] = useState(false);
 
   const service = new AuthService();
 
@@ -21,82 +22,93 @@ function Header(props) {
 
   if (loggedInUser) {
     return (
-      <nav class="navbar is-danger">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <img src=".././favicon.ico" alt="Sophies website" />
+      <nav
+        className="navbar is-danger"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
+          <a className="navbar-item" href="/">
+            <img src=".././favicon.ico" alt="Healthy Habits" />
           </a>
-          <div
-            class="navbar-burger burger"
-            data-target="navbarExampleTransparentExample"
+          <a
+            role="button"
+            className={`navbar-burger burger${isActive ? "is-active" : ""}`}
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+            onClick={() => setisActive(!isActive)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
 
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" href="/">
+        <div
+          id="navbarBasicExample"
+          className={`navbar-menu${isActive ? "is-active" : ""}`}
+        >
+          <div className="navbar-start">
+            <a className="navbar-item has-text-white" href="/">
               Home
             </a>
-            <a class="navbar-item" href="/explore">
+            <a className="navbar-item has-text-white" href="/explore">
               Explore
             </a>
           </div>
-          <div class="navbar-end">
-            <a class="navbar-item" href="/my-habits">
+          <div className="navbar-end">
+            <a className="navbar-item has-text-white" href="/my-habits">
               MyHabits
             </a>
-            <div>
-              <button className="button is-danger" onClick={logOut}>
-                Logout
-              </button>
-            </div>
-            <div class="navbar-item">
-              <div class="field is-grouped"></div>
-            </div>
+            <a className="navbar-item has-text-white" onClick={logOut}>
+              Log Out
+            </a>
           </div>
         </div>
       </nav>
     );
   } else {
     return (
-      <nav class="navbar is-danger">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/">
+      <nav className="navbar is-danger">
+        <div className="navbar-brand">
+          <a className="navbar-item" href="/">
             <img src=".././favicon.ico" alt="Sophies website" />
           </a>
-          <div
-            class="navbar-burger burger"
-            data-target="navbarExampleTransparentExample"
+          <a
+            role="button"
+            className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+            onClick={() => setisActive(!isActive)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
 
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" href="/">
+        <div
+          id="navbarBasicExample"
+          className={`navbar-menu${isActive ? "is-active" : ""}`}
+        >
+          <div className="navbar-start">
+            <a className="navbar-item has-text-white" href="/">
               Home
             </a>
-            <a class="navbar-item" href="/explore">
+            <a className="navbar-item has-text-white" href="/explore">
               Explore
             </a>
           </div>
-          <div class="navbar-end">
-            <a class="navbar-item" href="/signup">
+          <div className="navbar-end">
+            <a className="navbar-item has-text-white" href="/signup">
               Sign up
             </a>
-            <a class="navbar-item" href="/login">
+            <a className="navbar-item has-text-white" href="/login">
               Log in
             </a>
-            <div class="navbar-item">
-              <div class="field is-grouped"></div>
-            </div>
+            <div className="navbar-item has-text-white"></div>
           </div>
         </div>
       </nav>

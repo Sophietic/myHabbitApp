@@ -33,7 +33,7 @@ function MyHabits(props) {
                 <h1 className="title is-1 is-family-code">My Habits</h1>
               </div>
               <h4>
-                <Link to={"/explore"}> Explore</Link> the habits that will
+                <Link to={"/explore"} > Explore</Link> the habits that will
                 change your life{" "}
               </h4>
               <br></br>
@@ -58,7 +58,7 @@ function MyHabits(props) {
                               className="card-footer-item"
                               to={`/my-habits/${oneMyHabit._id}`}
                             >
-                              <h3 className="button is-danger is-rounded">
+                              <h3 className="button is-danger is-rounded is-medium">
                                 See more
                               </h3>
                             </Link>

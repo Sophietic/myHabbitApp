@@ -15,7 +15,6 @@ import DetailMyHabit from "./components/Detaildmyhabit/Detailmyhabit";
 
 
 function App() {
-  //is gebruiker ingelogd of niet?
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   const service = new AuthService();
@@ -33,7 +32,6 @@ function App() {
     }
   }
 
-  //verander state naar ingelogde user
   function getLoggedInUser(userObject) {
     setLoggedInUser(userObject);
   }
@@ -41,7 +39,6 @@ function App() {
   isAuthenticated();
 
   if (loggedInUser) {
-    //wel ingelogd
     return (
       <div className="content">
         <Header

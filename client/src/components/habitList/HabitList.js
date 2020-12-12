@@ -45,7 +45,7 @@ function HabitList() {
                               className="card-footer-item"
                               to={`/explore/${habit._id}`}
                             >
-                              <h3 className="button is-danger is-rounded">
+                              <h3 className="button is-danger is-rounded is-medium">
                                 See more
                               </h3>
                             </Link>
