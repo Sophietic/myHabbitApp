@@ -18,14 +18,22 @@ router.post("/signup", (req, res, next) => {
   if (password.length < 9) {
    res.status(400).json({message:"For security purposes, you password needs to be at least 10 characters"});
     return;
+}
+  if(!email.match){
+    res.status(400).json({message: "Please use a valid email address."});
+    return;
   }
-  // const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  // if (!regex.test(password)) {
-  //   res
-  //     .status(500)
-  //     .render('auth/signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
-  //   return;
-  // }
+  const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  if (!emailRegexp.test(email)) {
+    res.status(500).json({message: 'Please provide an existing email address.' });
+   return;
+ }
+
+   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  if (!regex.test(password)) {
+     res.status(500).json({message: 'Password needs to have at least 6 characters and must contain at least one number, one lowercase and one uppercase letter.' });
+    return;
+  }
 
   User.findOne({ email }).then((user) => {
     if (user !== null) {

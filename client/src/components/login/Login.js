@@ -47,12 +47,12 @@ function Login(props) {
                 <h1 className="title is-1 is-family-code">Log in</h1>
                 <div className="field">
                   <label className="label is-medium" htmlFor="email">
-                    Email Address
+                    Email address
                   </label>
                   <div className="control">
                     <input
                       name="email"
-                      type="text"
+                      type="email"
                       value={loginState.email}
                       onChange={handleChange}
                       className="input"
@@ -92,7 +92,7 @@ function Login(props) {
               <br></br>
               <footer className="card-footer">
                 <p className="card-footer-item">
-                 Don't have an account? <Link to={"/signup"}> Sign up</Link>
+                 Don't have an account? <Link to={"/signup"}>Sign up</Link>
                 </p>
               </footer>
             </div>

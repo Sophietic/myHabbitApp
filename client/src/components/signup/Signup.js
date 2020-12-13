@@ -48,12 +48,12 @@ function Signup(props) {
                 <h1 className="title is-1 is-family-code">Sign Up</h1>
                 <div className="field">
                   <label className="label is-medium" htmlFor="email">
-                    Email Address
+                   Email
                   </label>
                   <div className="control">
                     <input
                       name="email"
-                      type="text"
+                      type="email"
                       value={formState.email}
                       onChange={handleChange}
                       className="input"
