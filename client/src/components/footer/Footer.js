@@ -1,10 +1,12 @@
 import React from "react";
 import "bulma/css/bulma.css";
+import "./Footer.css";
+
 
 function Footer() {
   return (
     <footer className="footer">
-      <div class="content has-text-centered">
+      <div className="content has-text-centered">
         <p>
           <strong>Copyright © 2020 </strong>
           <a className="has-text-danger" href="https://github.com/Sophietic">

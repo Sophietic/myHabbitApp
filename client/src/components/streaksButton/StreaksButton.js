@@ -5,14 +5,10 @@ import HabitService from "../../services/habits.service.js";
 import { summary } from "date-streaks";
 
 function MyStreakButton(props) {
-  //   const dates = props.user.streaks
-  //   summary({ dates })
-  //   console.log(summary({ dates }))   //het werkt!!
-  //console.log(props.user.streaks)
   let history = useHistory();
   function addToMyStreaks() {
-    const { id } = props.match.params; //id van habit
-    const { userId } = props.user._id; //id van user
+    const { id } = props.match.params; 
+    const { userId } = props.user._id; 
     const service = new HabitService();
 
     service
@@ -25,8 +21,9 @@ function MyStreakButton(props) {
 
   return (
     <div>
+    
       <button className="button is-danger is-rounded" onClick={addToMyStreaks}>
-        Add to streaks
+        Click to complete this habit for today
       </button>
     </div>
   );

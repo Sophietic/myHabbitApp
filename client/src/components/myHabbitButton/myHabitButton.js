@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import "bulma/css/bulma.css";
 import { useHistory, Link } from "react-router-dom";
 import HabitService from "../../services/habits.service.js";
@@ -9,7 +8,6 @@ function MyHabitButton(props) {
   let history = useHistory();
   function addToMyHabits() {
     const { id } = props.match.params; 
-    const { userId } = props.user._id; 
     const service = new HabitService();
 
     service
@@ -31,7 +29,7 @@ function MyHabitButton(props) {
   } else {
     return (
       <Link to="/signup">
-        <button className="button is-danger is-rounded" type="button">
+        <button className="button is-danger is-rounded is-medium" type="button">
           Add to myHabits
         </button>
       </Link>

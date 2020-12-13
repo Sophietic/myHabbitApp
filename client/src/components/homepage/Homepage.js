@@ -15,10 +15,7 @@ function Homepage() {
                 More energy. Happier. Less stressed. It all starts with just a
                 few minutes a day.
               </p>
-              {/* <div className="card-image">
-            <figure className="image is-half">
-  <img src="././pexels-photo-204686.jpeg" />
-</figure></div> */}
+ 
               <div className="card-content">
                 <video className="videoTag" autoPlay loop muted>
                   <source
@@ -27,10 +24,6 @@ function Homepage() {
                   />
                 </video>
               </div>
-
-              {/* <figure class="image is-16by9">
-  <iframe className="has-ratio" width="640" height="360" src="././production ID_4474973.mp4" frameborder="0" loop="1" allowfullscreen></iframe>
-</figure> */}
             </div>
           </div>
         </div>

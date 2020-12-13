@@ -41,7 +41,7 @@ function Login(props) {
     <section className="section">
       <div className="container">
         <div className="columns is-centered">
-          <div className="column is-auto">
+          <div className="column is-half">
             <div className="card">
               <form className="card-content" onSubmit={handleSubmit}>
                 <h1 className="title is-1 is-family-code">Log in</h1>
@@ -81,7 +81,7 @@ function Login(props) {
                 </div>
                 <div className="control card-content">
                   <button
-                    className="button is-danger"
+                    className="button is-danger is-rounded"
                     type="submit"
                     value="Login"
                   >
@@ -92,7 +92,7 @@ function Login(props) {
               <br></br>
               <footer className="card-footer">
                 <p className="card-footer-item">
-                  Already have an account? <Link to={"/login"}> Log In</Link>{" "}
+                 Don't have an account? <Link to={"/signup"}> Sign up</Link>
                 </p>
               </footer>
             </div>

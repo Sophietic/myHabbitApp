@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "bulma/css/bulma.css";
 import "./HabitDetails.css";
 import MyHabitButton from ".././myHabbitButton/myHabitButton";
@@ -14,7 +13,6 @@ const initialState = {
 
 function HabitDetails(props) {
   const [habitDetailState, setHabitDetail] = useState(initialState);
-  const loggedInUser = props.loggedInUser;
 
   function getOneHabit() {
     const { id } = props.match.params;
