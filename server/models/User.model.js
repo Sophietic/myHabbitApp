@@ -12,10 +12,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    streaks: 
-      { type: Schema.Types.ObjectId, ref: "Streak" },
-    
-
     myHabits: [
       { type: Schema.Types.ObjectId, ref: "Habit" },
       { timestamps: true },

@@ -84,10 +84,10 @@ router.get("/my-habits/:id", (req, res) => {
   const { id } = req.params;
   const userId = req.user._id;
 
-  Streak.findOne({ownHabit: id, owner: userId})
-  .populate("ownHabit")
+  Streak.findOne({ ownHabit: id, owner: userId })
+    .populate("ownHabit")
     .then((streakFromDB) => {
-      console.log(streakFromDB)
+      console.log(streakFromDB);
       res.status(200).json(streakFromDB);
     })
     .catch((error) => {
@@ -102,18 +102,56 @@ router.post("/my-habits/:id", (req, res) => {
   const userId = req.user._id;
   const today = new Date();
 
-  Streak.findOneAndUpdate({ownHabit: id, owner: userId},
-    {$push: {"dayCompleted": today}},
-    {safe: true, upsert: true, new : true})
-  .then((myStreakInDB) => {
-        console.log(myStreakInDB);
-      
-        res.status(200).json(myStreakInDB);
-      })
-      .catch((error) => {
-        console.log(error);
-        res.status(500).json(error);
-      });
+  Streak.findOneAndUpdate(
+    { ownHabit: id, owner: userId },
+    { $push: { dayCompleted: today } },
+    { safe: true, upsert: true, new: true }
+  )
+    .then((myStreakInDB) => {
+      console.log(myStreakInDB);
+
+      res.status(200).json(myStreakInDB);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json(error);
+    });
 });
+
+//deletefrommyhabits
+router.post("/my-habits/:id/delete", (req, res) => {
+  const { id } = req.params;
+  const userId = req.user._id;
+
+  User.findByIdAndUpdate(userId, { $pull: { myHabits: id } })
+    .then((myHabitInDB) => {
+      console.log(myHabitInDB);
+      res.status(200).json(myHabitInDB);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json(error);
+    });
+});
+
+
+//delete from streak
+// router.delete("/my-habits/:id", (req, res) => {
+//   const { id } = req.params;
+
+//   const userId = req.user._id;
+
+//   Streak.findOneAndRemove({ ownHabit: id, owner: userId })
+
+//     .then(() => {
+//       res.status(200).json({
+//         message: `Habit with ${id} is successfully removed`,
+//       });
+//     })
+
+//     .catch((error) => {
+//       res.status(500).json(error);
+//     });
+// });
 
 module.exports = router;
