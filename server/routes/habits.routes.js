@@ -82,11 +82,13 @@ router.get("/my-habits", (req, res) => {
 //detailed my-habits
 router.get("/my-habits/:id", (req, res) => {
   const { id } = req.params;
+  const userId = req.user._id;
 
-  Habit.findById(id)
-    .populate("streaks")
-    .then((habitFromDB) => {
-      res.status(200).json(habitFromDB);
+  Streak.findOne({ownHabit: id, owner: userId})
+  .populate("ownHabit")
+    .then((streakFromDB) => {
+      console.log(streakFromDB)
+      res.status(200).json(streakFromDB);
     })
     .catch((error) => {
       console.log(error);
@@ -96,26 +98,22 @@ router.get("/my-habits/:id", (req, res) => {
 
 //add day to streak
 router.post("/my-habits/:id", (req, res) => {
-  const { id } = req.params;
-  // const habitId = id
-  // const userId = req.user._id;
-  const habitId = "5fd0d1de99d64b373e0de067";
-  // const userId = "5fd35a9b3af6a81726914172"
+  const { id } = req.params; //habitId
+  const userId = req.user._id;
   const today = new Date();
 
-  Streak.findOneAndUpdate(
-    habitId,
-    { $push: { dayCompleted: [today] } }
-    // { dayCompleted: today},
-  )
-    .then((myStreakInDB) => {
-      console.log(myStreakInDB);
-      res.status(200).json(myStreakInDB);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json(error);
-    });
+  Streak.findOneAndUpdate({ownHabit: id, owner: userId},
+    {$push: {"dayCompleted": today}},
+    {safe: true, upsert: true, new : true})
+  .then((myStreakInDB) => {
+        console.log(myStreakInDB);
+      
+        res.status(200).json(myStreakInDB);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
 });
 
 module.exports = router;
