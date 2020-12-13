@@ -27,13 +27,17 @@ class HabitService {
     return this.service.post("/create", data).then((response) => response);
   };
 
-  getonehabit = (id) => {
+  getmyhabit = (id) => {
     return this.service.get(`/my-habits/${id}`).then((response) => response);
   };
 
   addStreak = (id) => {
     return this.service.post(`/my-habits/${id}`).then((response) => response);
   };
+  deleteStreak = (id) => {
+    return this.service.post(`/my-habits/${id}/delete`).then((response) => response);
+  };
+  
 }
 
 export default HabitService;

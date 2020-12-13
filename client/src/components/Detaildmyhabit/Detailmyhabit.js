@@ -12,21 +12,36 @@ const initialState = {
 };
 
 function DetailMyHabit(props) {
-  const [habitDetailState, setHabitDetail] = useState(initialState);
+  const [detailState, setDetail] = useState(initialState);
   const [streakState, setStreak] = useState(initialState);
+  const [deleteState, setDelete] = useState(initialState);
 
   function getOneHabit() {
     const { id } = props.match.params;
     const service = new HabitService();
 
     service
-      .getonehabit(id)
+      .getmyhabit(id)
       .then((habitFromApi) => {
         console.log(habitFromApi.data.dayCompleted);
         const dates = habitFromApi.data.dayCompleted
         console.log(summary(dates))
-        setHabitDetail(habitFromApi.data.ownHabit);
+        setDetail(habitFromApi.data.ownHabit);
         setStreak(summary(dates))
+        setDelete(habitFromApi.data)
+      })
+      .catch((error) => console.error(error));
+
+  }
+
+  function deletehabit(){
+    const { id } = props.match.params;
+    const service = new HabitService();
+
+    service
+      .deleteStreak(id)
+      .then(() => {
+        props.history.push("/my-habits");
       })
       .catch((error) => console.error(error));
   }
@@ -42,9 +57,9 @@ function DetailMyHabit(props) {
               <div className="card">
                 <div className="card-content" >
                   <h3 className="title is-1 is-family-code">
-                    {habitDetailState.habitname}
+                    {detailState.habitname}
                   </h3>
-                  <p className="content">{habitDetailState.description}</p>
+                  <p className="content">{detailState.description}</p>
                   <p className="content">
                     <strong>Current streak:</strong>{" "}{streakState.currentStreak}
                   </p>
@@ -57,11 +72,15 @@ function DetailMyHabit(props) {
                 </div>
                 <div className="card-content">
                   <MyStreaksButton
-                    theHabit={habitDetailState}
+                    theHabit={detailState}
                     getOneHabit={getOneHabit}
                     {...props}
                   />{" "}
                 </div>
+                <div className="card-content">
+                <button className="button is-danger is-rounded" onClick={deletehabit}>
+        Delete 
+      </button></div>
               </div>
             </div>
           </div>
