@@ -23,6 +23,7 @@ function Login(props) {
   function handleSubmit(event) {
     event.preventDefault();
     const { email, password } = loginState;
+    
     service
       .login(email, password)
       .then((response) => {

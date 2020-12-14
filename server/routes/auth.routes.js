@@ -15,10 +15,6 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
-  if (password.length < 9) {
-   res.status(400).json({message:"For security purposes, you password needs to be at least 10 characters"});
-    return;
-}
   if(!email.match){
     res.status(400).json({message: "Please use a valid email address."});
     return;

@@ -23,9 +23,7 @@ function DetailMyHabit(props) {
     service
       .getmyhabit(id)
       .then((habitFromApi) => {
-        console.log(habitFromApi.data.dayCompleted);
         const dates = habitFromApi.data.dayCompleted;
-        console.log(summary(dates));
         setDetail(habitFromApi.data.ownHabit);
         setStreak(summary(dates));
       })
@@ -59,9 +57,11 @@ function DetailMyHabit(props) {
                       onClick={deletehabit}
                     > </button></span></div>
                 <div className="card-content">
+                
                   <h3 className="title is-1 is-family-code">
                     {detailState.habitname}
                   </h3>
+                  <p>Complete this habit within 24 hours to keep the current streak going!</p>
                   <p className="content">{detailState.description}</p>
                   <p className="content">
                     <strong>Current streak:</strong> {streakState.currentStreak}
@@ -69,6 +69,7 @@ function DetailMyHabit(props) {
                   <p className="content">
                     <strong>Longest streak:</strong> {streakState.longestStreak}
                   </p>
+            
                   <p className="content" data-enable-time={true}>
                     <strong>Today in streak:</strong>{" "}
                     {`${streakState.todayInStreak}`}

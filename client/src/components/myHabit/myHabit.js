@@ -7,8 +7,6 @@ import { summary } from "date-streaks";
 function MyHabits(props) {
   const [myHabitsState, setMyHabits] = useState([]);
 
-  console.log(myHabitsState);
-
   function getMyHabits() {
     const service = new HabitService();
 
@@ -36,6 +34,7 @@ function MyHabits(props) {
                 <Link to={"/explore"} > Explore</Link> the habits that will
                 change your life{" "}
               </h4>
+              <p>Check out the progress of your habits</p>
               <br></br>
               <div className="columns is-multiline">
                 {myHabitsState.map((oneMyHabit) => {
@@ -59,7 +58,7 @@ function MyHabits(props) {
                               to={`/my-habits/${oneMyHabit._id}`}
                             >
                               <h3 className="button is-danger is-rounded is-medium">
-                                See more
+                                Check progress
                               </h3>
                             </Link>
                           </footer>

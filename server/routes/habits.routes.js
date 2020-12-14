@@ -8,7 +8,6 @@ const Streak = require("../models/Streak.model.js");
 router.get("/explore", (req, res) => {
   Habit.find()
     .then((allHabitsFromDB) => {
-      console.log(allHabitsFromDB);
       res.status(200).json(allHabitsFromDB);
     })
     .catch((error) => {
@@ -23,7 +22,6 @@ router.post("/create", (req, res) => {
 
   Habit.create({ habitname, description, categories })
     .then((newHabitInDB) => {
-      console.log(newHabitInDB);
       res.status(200).json(newHabitInDB);
     })
     .catch((error) => {
@@ -56,7 +54,6 @@ router.post("/explore/:id", (req, res) => {
     User.findByIdAndUpdate(userId, { $push: { myHabits: id } }, { new: true }),
   ])
     .then((myHabitInDB) => {
-      console.log(myHabitInDB);
       res.status(200).json(myHabitInDB);
     })
     .catch((error) => {
@@ -87,7 +84,6 @@ router.get("/my-habits/:id", (req, res) => {
   Streak.findOne({ ownHabit: id, owner: userId })
     .populate("ownHabit")
     .then((streakFromDB) => {
-      console.log(streakFromDB);
       res.status(200).json(streakFromDB);
     })
     .catch((error) => {
@@ -108,8 +104,6 @@ router.post("/my-habits/:id", (req, res) => {
     { safe: true, upsert: true, new: true }
   )
     .then((myStreakInDB) => {
-      console.log(myStreakInDB);
-
       res.status(200).json(myStreakInDB);
     })
     .catch((error) => {
@@ -125,7 +119,6 @@ router.post("/my-habits/:id/delete", (req, res) => {
 
   User.findByIdAndUpdate(userId, { $pull: { myHabits: id } })
     .then((myHabitInDB) => {
-      console.log(myHabitInDB);
       res.status(200).json(myHabitInDB);
     })
     .catch((error) => {

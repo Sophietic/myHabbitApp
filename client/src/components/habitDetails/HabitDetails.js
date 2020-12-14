@@ -21,7 +21,6 @@ function HabitDetails(props) {
     service
       .getonehabit(id)
       .then((habitFromApi) => {
-        console.log(habitFromApi)
         setHabitDetail(habitFromApi.data);
         
       })

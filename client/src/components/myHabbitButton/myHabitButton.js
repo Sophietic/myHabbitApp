@@ -21,7 +21,7 @@ function MyHabitButton(props) {
   if (props.user) {
     return (
       <div>
-        <button className="button is-danger is-rounded" onClick={addToMyHabits}>
+        <button className="button is-danger is-rounded is-medium" onClick={addToMyHabits}>
           Add to myHabits
         </button>
       </div>

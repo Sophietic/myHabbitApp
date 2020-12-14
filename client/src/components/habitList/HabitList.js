@@ -26,6 +26,7 @@ function HabitList() {
           <div className="columns is-centered">
             <div className="column is-auto">
               <h1 className="title is-1 is-family-code">Explore all habits</h1>
+              <p>Discover the habits you can build up for a happier and more productive life</p>
               <div className="columns is-multiline">
                 {listState.map((habit) => {
                   return (
