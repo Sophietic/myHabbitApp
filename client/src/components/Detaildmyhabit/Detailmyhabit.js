@@ -56,18 +56,19 @@ function DetailMyHabit(props) {
                       className="delete is-small"
                       onClick={deletehabit}
                     > </button></span></div>
-                <div className="card-content">
+                <div className="card-content column is-10 is-offset-1">
                 
                   <h3 className="title is-1 is-family-code">
                     {detailState.habitname}
                   </h3>
-                  <p>Complete this habit within 24 hours to keep the current streak going!</p>
+                  <article className="message is-warning is-normal">                  <div className="message-body">Complete this habit within 24 hours to keep the current streak going!</div>
+</article>
                   <p className="content">{detailState.description}</p>
                   <p className="content">
-                    <strong>Current streak:</strong> {streakState.currentStreak}
+                    <strong>Current streak:</strong> {streakState.currentStreak}{" "}day(s)
                   </p>
                   <p className="content">
-                    <strong>Longest streak:</strong> {streakState.longestStreak}
+                    <strong>Longest streak:</strong> {streakState.longestStreak}{" "}day(s)
                   </p>
             
                   <p className="content" data-enable-time={true}>
@@ -75,6 +76,7 @@ function DetailMyHabit(props) {
                     {`${streakState.todayInStreak}`}
                   </p>
                   <div >
+                  <br></br>
 
                   <p clasName="card-footer-content">
               
@@ -84,6 +86,7 @@ function DetailMyHabit(props) {
                       {...props}
                 />
                   </p>
+                  <br></br>
         
                   </div>
                 </div>

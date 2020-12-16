@@ -36,7 +36,9 @@ function HabitDetails(props) {
           <div className="columns is-centered">
             <div className="column is-half">
               <div className="card">
-                <div className="card-content" key={habitDetailState._id}>
+              <br></br>
+
+                <div className="card-content column is-10 is-offset-1" key={habitDetailState._id}>
                   <h3 className="title is-1 is-family-code">
                     {habitDetailState.habitname}
                   </h3>
@@ -45,13 +47,14 @@ function HabitDetails(props) {
                     <strong>Category:</strong> {habitDetailState.categories}
                   </p>
                 </div>
-                <div className="card-content">
+                <div className="card-content column is-10 is-offset-1 ">
                   <MyHabitButton
                     theHabit={habitDetailState}
                     getOneHabit={getOneHabit}
                     {...props}
                   />{" "}
                 </div>
+                <br></br>
               </div>
             </div>
           </div>

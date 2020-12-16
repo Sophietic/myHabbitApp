@@ -41,7 +41,8 @@ function MyHabits(props) {
                   return (
                     <div class="column is-one-third">
                       <div className="card">
-                        <div className="card-content" key={oneMyHabit._id}>
+                      <br></br>
+                        <div className="card-content column is-10 is-offset-1" key={oneMyHabit._id}>
                           <h3 className="subtitle is-4 has-text-weight-semibold">
                             {oneMyHabit.habitname}{" "}
                           </h3>
