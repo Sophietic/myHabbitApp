@@ -3,7 +3,9 @@ import "bulma/css/bulma.css";
 import HabitService from "../../services/habits.service.js";
 import MyStreaksButton from ".././streaksButton/StreaksButton";
 import { summary } from "date-streaks";
-import "./Detailmyhabit"
+import "./Detailmyhabit";
+import { Link } from "react-router-dom";
+
 
 const initialState = {
   _id: " ",
@@ -23,9 +25,7 @@ function DetailMyHabit(props) {
     service
       .getmyhabit(id)
       .then((habitFromApi) => {
-        console.log(habitFromApi.data.dayCompleted);
         const dates = habitFromApi.data.dayCompleted;
-        console.log(summary(dates));
         setDetail(habitFromApi.data.ownHabit);
         setStreak(summary(dates));
       })
@@ -50,44 +50,70 @@ function DetailMyHabit(props) {
     <div>
       <section className="section">
         <div className="container">
-        
           <div className="columns is-centered">
             <div className="column is-half">
               <div className="card">
-              <div className="column is-half is-offset-four-fifths"><span className="tag is-danger is-light is-small">Delete     <button
-                      className="delete is-small"
-                      onClick={deletehabit}
-                    > </button></span></div>
-                <div className="card-content">
+                <div className="column is-half is-offset-four-fifths">
+                  <span className="tag is-danger is-light is-small">
+                    Delete{" "}
+                    <button className="delete is-small" onClick={deletehabit}>
+                      {" "}
+                    </button>
+                  </span>
+                </div>
+                <div className="card-content column is-10 is-offset-1">
                   <h3 className="title is-1 is-family-code">
                     {detailState.habitname}
                   </h3>
-                  <p className="content">{detailState.description}</p>
+                  <article className="message is-warning is-normal">
+                    {" "}
+                    <div className="message-body">
+                      Complete this habit within 24 hours to keep the current
+                      streak going!
+                    </div>
+                  </article>
+                  <p className="content">{detailState.description}<a className="has-text-danger" href={`${detailState.science}`} target="_blank">Read the science. </a>
+</p>
+                  <p className="content">     <strong>Daily Habit:{" "}</strong> {detailState.dailyhabit}</p>
+
+{/* <p className="content">
+  <strong>Category:</strong> {detailState.categories}
+</p> */}
+{/* <Link
+            className="content"
+            to={`${detailState.science}`}
+          >
+            <h3 className="button is-danger is-rounded is-medium">
+              Read the science
+            </h3>
+    
+          </Link> */}
                   <p className="content">
-                    <strong>Current streak:</strong> {streakState.currentStreak}
+                    <strong>Current streak:</strong> {streakState.currentStreak}{" "}
+                    day(s)
                   </p>
                   <p className="content">
-                    <strong>Longest streak:</strong> {streakState.longestStreak}
+                    <strong>Longest streak:</strong> {streakState.longestStreak}{" "}
+                    day(s)
                   </p>
+
                   <p className="content" data-enable-time={true}>
                     <strong>Today in streak:</strong>{" "}
                     {`${streakState.todayInStreak}`}
                   </p>
-                  <div >
+                  <div>
+                    <br></br>
 
-                  <p clasName="card-footer-content">
-              
-                    <MyStreaksButton
-                      theHabit={detailState}
-                      getOneHabit={getOneHabit}
-                      {...props}
-                />
-                  </p>
-        
+                    <p clasName="card-footer-content">
+                      <MyStreaksButton
+                        theHabit={detailState}
+                        getOneHabit={getOneHabit}
+                        {...props}
+                      />
+                    </p>
+                    <br></br>
                   </div>
                 </div>
-
-                
               </div>
             </div>
           </div>

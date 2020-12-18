@@ -7,17 +7,27 @@ const habitSchema = new Schema(
       type: String,
       required: true,
     },
-    description: {
+    dailyhabit: {
       type: String,
+      default: null,
+    },
+    // shortdescription: {
+    //   type: String,
+    //   default: null,
+    // },
+   description: {
+      type: String,
+      default: null,
+    },
+    science: {
+      type: String,
+      default: null,
+
     },
     categories: {
       type: String,
-      enum: ["Nutrition", "Energy", "Sleep"],
+      enum: ["Nutrition", "Energy", "Sleep", "Mental Health"],
     },
-    streaks: [
-      { type: Schema.Types.ObjectId, ref: "Streak" },
-      { timestamps: true },
-    ],
   },
   { timestamps: true }
 );

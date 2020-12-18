@@ -1,5 +1,6 @@
 import React from "react";
 import "./Homepage.css";
+import { Link } from "react-router-dom"
 
 function Homepage() {
   return (
@@ -7,7 +8,7 @@ function Homepage() {
       <div className="container">
         <div className="columns is-centered">
           <div class="column is-auto">
-            <div className="card">
+            <div className="card ">
               <h1 className="title is-1 is-family-code card-content">
                 Healthy Habits
               </h1>
@@ -15,7 +16,19 @@ function Homepage() {
                 More energy. Happier. Less stressed. It all starts with just a
                 few minutes a day.
               </p>
- 
+              {/* <p className="card-content">Choose one of the many habits to improve your life. 
+              Build up your streak by completing your daily habit</p> */}
+
+              <div className="card-content ">
+              <Link
+                           
+                              to='/signup'
+                            >
+                              <h3 className="button is-danger is-rounded is-large">
+                                Start today
+                              </h3>
+                            </Link>
+                            </div>
               <div className="card-content">
                 <video className="videoTag" autoPlay loop muted>
                   <source

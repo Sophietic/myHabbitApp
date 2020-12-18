@@ -16,9 +16,8 @@ function Signup(props) {
   const service = new AuthService();
 
   function handleChange(event) {
-    //trek ingevulde waarden uit form
     const { name, value } = event.target;
-    setForm({ ...formState, [name]: value }); //neem alle props mee met ...FormState en voeg alle ingevulde name values toe aan nieuwe state
+    setForm({ ...formState, [name]: value }); 
   }
 
   function handleSubmit(event) {
@@ -44,43 +43,57 @@ function Signup(props) {
         <div className="columns is-centered">
           <div className="column is-half">
             <div className="card">
-              <form className="card-content" onSubmit={handleSubmit}>
+            <br></br>
+
+              <form className="card-content column is-10 is-offset-1" onSubmit={handleSubmit}>
+
                 <h1 className="title is-1 is-family-code">Sign Up</h1>
+
                 <div className="field">
                   <label className="label is-medium" htmlFor="email">
                    Email
                   </label>
-                  <div className="control">
+                  <div className="control has-icons-left">
                     <input
                       name="email"
                       type="email"
                       value={formState.email}
                       onChange={handleChange}
                       className="input"
-                      placeholder="Please provide your email address"
+                      placeholder="e.g. sophie@gmail.com"
                     />
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+    </span>
+  
                   </div>
+
                 </div>
 
-                <div className="field">
+                <div className="field ">
                   <label className="label is-medium" htmlFor="password">
                     Password
                   </label>
-                  <div className="control">
+                  <div className="control has-icons-left">
                     <input
                       name="password"
                       type="password"
                       value={formState.password}
                       onChange={handleChange}
                       className="input"
-                      placeholder="Please provide your password"
+                      placeholder="6+ characters"
                     />
+                        <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
                   </div>
                 </div>
-                <div className="has-text-danger">
+                <p className="help is-danger">
+                
                   {errorState && <span>{errorState}</span>}
-                </div>
-                <div className="control card-content">
+                </p>
+                <br></br>
+                <div className="control">
                   <button
                     className="button is-danger is-rounded"
                     type="submit"
@@ -93,7 +106,9 @@ function Signup(props) {
               <br></br>
               <footer className="card-footer">
                 <p className="card-footer-item">
-                  Already have an account? <Link to={"/login"}> Log In</Link>{" "}
+                Already have an account?{" "}
+                <a className="has-text-danger" href="/login" >{" "}Log In </a>
+                  {/* Already have an account?{" "} <Link className="text-has-danger" to={"/login"}>{" "} Log In</Link> */}
                 </p>
               </footer>
             </div>

@@ -3,6 +3,8 @@ import "bulma/css/bulma.css";
 import "./HabitDetails.css";
 import MyHabitButton from ".././myHabbitButton/myHabitButton";
 import HabitService from "../../services/habits.service.js";
+import { Link } from "react-router-dom";
+
 
 const initialState = {
   _id: " ",
@@ -21,7 +23,6 @@ function HabitDetails(props) {
     service
       .getonehabit(id)
       .then((habitFromApi) => {
-        console.log(habitFromApi)
         setHabitDetail(habitFromApi.data);
         
       })
@@ -37,22 +38,31 @@ function HabitDetails(props) {
           <div className="columns is-centered">
             <div className="column is-half">
               <div className="card">
-                <div className="card-content" key={habitDetailState._id}>
+              <br></br>
+
+                <div className="card-content column is-10 is-offset-1" key={habitDetailState._id}>
                   <h3 className="title is-1 is-family-code">
                     {habitDetailState.habitname}
                   </h3>
-                  <p className="content">{habitDetailState.description}</p>
+                  <p className="content">{habitDetailState.description}                   <a className="has-text-danger" href={`${habitDetailState.science}`} target="_blank">Read the science. </a>
+</p>
                   <p className="content">
-                    <strong>Category:</strong> {habitDetailState.categories}
+                  <strong>Daily Habit:{" "}</strong> 
+                  {habitDetailState.dailyhabit}</p>
+
+                  <p className="content">
+                    <strong>Category:{" "}</strong> {habitDetailState.categories}
                   </p>
+           
                 </div>
-                <div className="card-content">
+                <div className="card-content column is-10 is-offset-1 ">
                   <MyHabitButton
                     theHabit={habitDetailState}
                     getOneHabit={getOneHabit}
                     {...props}
                   />{" "}
                 </div>
+                <br></br>
               </div>
             </div>
           </div>

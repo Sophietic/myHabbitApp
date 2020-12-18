@@ -23,6 +23,7 @@ function Login(props) {
   function handleSubmit(event) {
     event.preventDefault();
     const { email, password } = loginState;
+    
     service
       .login(email, password)
       .then((response) => {
@@ -43,21 +44,26 @@ function Login(props) {
         <div className="columns is-centered">
           <div className="column is-half">
             <div className="card">
-              <form className="card-content" onSubmit={handleSubmit}>
+            <br></br>
+
+              <form className="card-content column is-10 is-offset-1" onSubmit={handleSubmit}>
                 <h1 className="title is-1 is-family-code">Log in</h1>
                 <div className="field">
                   <label className="label is-medium" htmlFor="email">
-                    Email address
+                    Email
                   </label>
-                  <div className="control">
+                  <div className="control has-icons-left">
                     <input
                       name="email"
                       type="email"
                       value={loginState.email}
                       onChange={handleChange}
                       className="input"
-                      placeholder="Please provide your email address"
+                      placeholder="e.g. sophie@gmail.com"
                     />
+                                        <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+    </span>
                   </div>
                 </div>
 
@@ -65,21 +71,26 @@ function Login(props) {
                   <label className="label is-medium" htmlFor="password">
                     Password
                   </label>
-                  <div className="control">
+                  <div className="control has-icons-left">
                     <input
                       name="password"
                       type="password"
                       value={loginState.password}
                       onChange={handleChange}
                       className="input"
-                      placeholder="Please provide your password"
+                      placeholder="Provide password"
                     />
+                                         <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
                   </div>
                 </div>
-                <div className="has-text-danger">
-                  {errorState && <span>{errorState}</span>}
-                </div>
-                <div className="control card-content">
+                <p className="help is-danger">
+                
+                {errorState && <span>{errorState}</span>}
+              </p>
+              <br></br>
+                <div className="control">
                   <button
                     className="button is-danger is-rounded"
                     type="submit"
@@ -91,9 +102,14 @@ function Login(props) {
               </form>
               <br></br>
               <footer className="card-footer">
-                <p className="card-footer-item">
-                 Don't have an account? <Link to={"/signup"}>Sign up</Link>
+              <p className="card-footer-item">
+               Don't have an account?{" "}
+                <a className="has-text-danger" href="/signup" >{" "}Sign Up </a>
+                  {/* Already have an account?{" "} <Link className="text-has-danger" to={"/login"}>{" "} Log In</Link> */}
                 </p>
+                {/* <p className="card-footer-item">
+                 Don't have an account? <Link to={"/signup"}>Sign up</Link>
+                </p> */}
               </footer>
             </div>
           </div>

@@ -14,7 +14,8 @@ function Header(props) {
   }, [props.userInSession]);
 
   function logOut() {
-    service.logout().then(() => {
+    service.logout()
+    .then(() => {
       setLoggedInUser(null);
       props.getLoggedInUser(null);
     });
@@ -29,7 +30,7 @@ function Header(props) {
       >
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-            <img src=".././favicon.ico" alt="Healthy Habits" />
+            <img src=".././logo192.png" alt="Healthy Habits" />
           </a>
           <a
             role="button"
@@ -61,7 +62,7 @@ function Header(props) {
             <a className="navbar-item has-text-white" href="/my-habits">
               MyHabits
             </a>
-            <a className="navbar-item has-text-white" onClick={logOut}>
+            <a className="navbar-item has-text-white" onClick={logOut} href="/">
               Log Out
             </a>
           </div>
@@ -73,7 +74,7 @@ function Header(props) {
       <nav className="navbar is-danger">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-            <img src=".././favicon.ico" alt="Sophies website" />
+            <img src=".././logo192.png" alt="Healthy Habits" />
           </a>
           <a
             role="button"
