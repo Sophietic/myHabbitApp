@@ -102,9 +102,14 @@ function Login(props) {
               </form>
               <br></br>
               <footer className="card-footer">
-                <p className="card-footer-item">
-                 Don't have an account? <Link to={"/signup"}>Sign up</Link>
+              <p className="card-footer-item">
+               Don't have an account?{" "}
+                <a className="has-text-danger" href="/signup" >{" "}Sign Up </a>
+                  {/* Already have an account?{" "} <Link className="text-has-danger" to={"/login"}>{" "} Log In</Link> */}
                 </p>
+                {/* <p className="card-footer-item">
+                 Don't have an account? <Link to={"/signup"}>Sign up</Link>
+                </p> */}
               </footer>
             </div>
           </div>

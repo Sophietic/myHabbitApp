@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bulma/css/bulma.css";
 import { Link } from "react-router-dom";
 import HabitService from "../../services/habits.service.js";
-import { summary } from "date-streaks";
+import "./myHabit.css";
 
 function MyHabits(props) {
   const [myHabitsState, setMyHabits] = useState([]);
@@ -31,7 +31,7 @@ function MyHabits(props) {
                 <h1 className="title is-1 is-family-code">My Habits</h1>
               </div>
               <h4>
-                <Link to={"/explore"} > Explore</Link> the habits that will
+                <Link to={"/explore"} className="has-text-danger"> Explore</Link> the habits that will
                 change your life{" "}
               </h4>
               <p>Check out the progress of your habits</p>
@@ -41,18 +41,25 @@ function MyHabits(props) {
                   return (
                     <div class="column is-one-third">
                       <div className="card">
-                      <br></br>
-                        <div className="card-content column is-10 is-offset-1" key={oneMyHabit._id}>
+                        <br></br>
+                        <div
+                          className="card-content column is-10 is-offset-1"
+                          key={oneMyHabit._id}
+                        >
                           <h3 className="subtitle is-4 has-text-weight-semibold">
                             {oneMyHabit.habitname}{" "}
                           </h3>
-                          <p className="content">{oneMyHabit.streaks} </p>
-
-                          <p className="content">{oneMyHabit.description} </p>
+                          <p className="content">{oneMyHabit.dailyhabit} </p>
                           <p className="content">
                             <strong>Category:</strong> {oneMyHabit.categories}{" "}
                           </p>
                           <br></br>
+                          {/* <p className="content">{oneMyHabit.streaks} </p>
+
+                          <p className="content">{oneMyHabit.description} </p>
+                          <p className="content">
+                            <strong>Category:</strong> {oneMyHabit.categories}{" "}
+                          </p> */}
                           <footer className="card-footer">
                             <Link
                               className="card-footer-item"

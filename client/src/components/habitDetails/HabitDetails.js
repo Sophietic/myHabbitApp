@@ -3,6 +3,8 @@ import "bulma/css/bulma.css";
 import "./HabitDetails.css";
 import MyHabitButton from ".././myHabbitButton/myHabitButton";
 import HabitService from "../../services/habits.service.js";
+import { Link } from "react-router-dom";
+
 
 const initialState = {
   _id: " ",
@@ -42,10 +44,16 @@ function HabitDetails(props) {
                   <h3 className="title is-1 is-family-code">
                     {habitDetailState.habitname}
                   </h3>
-                  <p className="content">{habitDetailState.description}</p>
+                  <p className="content">{habitDetailState.description}                   <a className="has-text-danger" href={`${habitDetailState.science}`} target="_blank">Read the science. </a>
+</p>
                   <p className="content">
-                    <strong>Category:</strong> {habitDetailState.categories}
+                  <strong>Daily Habit:{" "}</strong> 
+                  {habitDetailState.dailyhabit}</p>
+
+                  <p className="content">
+                    <strong>Category:{" "}</strong> {habitDetailState.categories}
                   </p>
+           
                 </div>
                 <div className="card-content column is-10 is-offset-1 ">
                   <MyHabitButton

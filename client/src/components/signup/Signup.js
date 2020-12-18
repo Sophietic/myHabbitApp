@@ -81,7 +81,7 @@ function Signup(props) {
                       value={formState.password}
                       onChange={handleChange}
                       className="input"
-                      placeholder="Choose password"
+                      placeholder="6+ characters"
                     />
                         <span class="icon is-small is-left">
       <i class="fas fa-lock"></i>
@@ -106,7 +106,9 @@ function Signup(props) {
               <br></br>
               <footer className="card-footer">
                 <p className="card-footer-item">
-                  Already have an account? <Link to={"/login"}> Log In</Link>{" "}
+                Already have an account?{" "}
+                <a className="has-text-danger" href="/login" >{" "}Log In </a>
+                  {/* Already have an account?{" "} <Link className="text-has-danger" to={"/login"}>{" "} Log In</Link> */}
                 </p>
               </footer>
             </div>
