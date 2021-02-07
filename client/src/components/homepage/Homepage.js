@@ -1,6 +1,6 @@
 import React from "react";
 import "./Homepage.css";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function Homepage() {
   return (
@@ -20,15 +20,12 @@ function Homepage() {
               Build up your streak by completing your daily habit</p> */}
 
               <div className="card-content ">
-              <Link
-                           
-                              to='/signup'
-                            >
-                              <h3 className="button is-danger is-rounded is-large">
-                                Start today
-                              </h3>
-                            </Link>
-                            </div>
+                <Link to="/signup">
+                  <h3 className="button is-danger is-rounded is-large">
+                    Start today
+                  </h3>
+                </Link>
+              </div>
               <div className="card-content">
                 <video className="videoTag" autoPlay loop muted>
                   <source

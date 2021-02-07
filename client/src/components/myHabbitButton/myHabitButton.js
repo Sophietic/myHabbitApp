@@ -2,7 +2,6 @@ import React from "react";
 import "bulma/css/bulma.css";
 import { useHistory, Link } from "react-router-dom";
 import HabitService from "../../services/habits.service.js";
-import { summary } from "date-streaks";
 
 function MyHabitButton(props) {
   let history = useHistory();

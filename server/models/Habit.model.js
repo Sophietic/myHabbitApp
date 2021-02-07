@@ -15,18 +15,25 @@ const habitSchema = new Schema(
     //   type: String,
     //   default: null,
     // },
-   description: {
+    description: {
       type: String,
       default: null,
     },
     science: {
       type: String,
       default: null,
-
     },
     categories: {
       type: String,
-      enum: ["Nutrition", "Energy", "Sleep", "Mental Health"],
+      enum: ["Nutrition", "Energy", "Sleep", "Mental Health", "Relax", "Mind"],
+      // lifestyle medicine=
+      // wholefood-plant-based diet: Nutrition,
+      //sleep,
+      //harmful substance avoidance,
+      //social support,
+      //stress management: relax,
+      //physical activity: energy?
+      //microbiome
     },
   },
   { timestamps: true }

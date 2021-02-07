@@ -4,7 +4,6 @@ import HabitService from "../../services/habits.service.js";
 import MyStreaksButton from ".././streaksButton/StreaksButton";
 import { summary } from "date-streaks";
 import "./Detailmyhabit";
-import { Link } from "react-router-dom";
 
 
 const initialState = {
@@ -72,7 +71,7 @@ function DetailMyHabit(props) {
                       streak going!
                     </div>
                   </article>
-                  <p className="content">{detailState.description}<a className="has-text-danger" href={`${detailState.science}`} target="_blank">Read the science. </a>
+                  <p className="content">{detailState.description}<a className="has-text-danger" href={`${detailState.science}`} target="_blank" rel="noreferrer">Read the science. </a>
 </p>
                   <p className="content">     <strong>Daily Habit:{" "}</strong> {detailState.dailyhabit}</p>
 

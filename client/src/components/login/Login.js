@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import AuthService from "../../services/auth.service.js";
 import "bulma/css/bulma.css";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const initialState = {
   email: "",
