@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import AuthService from "../../services/auth.service.js";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "bulma/css/bulma.css";
 
 const initialState = {
