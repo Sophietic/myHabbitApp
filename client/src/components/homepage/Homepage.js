@@ -13,8 +13,7 @@ function Homepage() {
                 Healthy Habits
               </h1>
               <p className="subtitle is-3 card-content">
-                More energy. Happier. Less stressed. It all starts with just a
-                few minutes a day.
+                More energy. Happier. Less stressed. It all starts with just one action a day.
               </p>
               {/* <p className="card-content">Choose one of the many habits to improve your life. 
               Build up your streak by completing your daily habit</p> */}

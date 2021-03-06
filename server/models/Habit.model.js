@@ -11,10 +11,6 @@ const habitSchema = new Schema(
       type: String,
       default: null,
     },
-    // shortdescription: {
-    //   type: String,
-    //   default: null,
-    // },
     description: {
       type: String,
       default: null,

@@ -1,12 +1,13 @@
+//https://www.youtube.com/watch?v=Q8JyF3wpsHc searchbar
 import React, { useState, useEffect } from "react";
 import "bulma/css/bulma.css";
 import "./HabitList.css";
 import { Link } from "react-router-dom";
 import HabitService from "../../services/habits.service.js";
-import SearchBar from ".././searchBar/SearchBar.js";
 
 function HabitList() {
   const [listState, setList] = useState([]);
+  const [search, SetSearch] = useState("");
 
   function getAllHabits() {
     const service = new HabitService();
@@ -21,6 +22,15 @@ function HabitList() {
 
   useEffect(getAllHabits, []);
 
+  const filteredHabits = listState.filter((habit) => {
+    console.log(habit);
+    return (
+      habit.habitname.toLowerCase().includes(search.toLowerCase()) ||
+      habit.dailyhabit.toLowerCase().includes(search.toLowerCase()) ||
+      habit.categories.toLowerCase().includes(search.toLowerCase())
+    );
+  });
+
   return (
     <div>
       <section className="section">
@@ -33,70 +43,84 @@ function HabitList() {
                 Discover the habits you can build up for a happier and healthier
                 life
               </p>
+              <div className="control has-icons-left">
+                <input
+                  className="input is-light "
+                  type="text"
+                  placeholder="Search habits"
+                  onChange={(e) => SetSearch(e.target.value)}
+                />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
               <br></br>
-              {/* <SearchBar listState = {listState} /> */}
-
               <div className="columns is-multiline">
-                {listState.map((habit) => {
+                {filteredHabits.map((habit) => {
                   return (
                     <div class="column is-one-third">
-                      <div className="card">
-                        <br></br>
-
-                        <div
-                          className="card-content column is-10 is-offset-1"
-                          key={habit._id}
-                        >
-                          <div className="columns">
-                            <div className="card-image column is-one-fifth ">
-
-                            <span className="icon has-text-warning">
-                            {(() => {
-              if (habit.categories === 'Nutrition'){
-                  return (
-                    <i className="fas fa-lemon "></i>
-                  )
-              }else if(habit.categories === 'Mental Health'){return ( <i className="fas fa-brain "></i>)}
-              else if(habit.categories === 'Sleep'){return ( <i className="fas fa-bed "></i>)}
-              else if(habit.categories === 'Energy'){return ( <i className="fas fa-battery-full "></i>)}
-
-              else {return ( <i className="fas fa-star "></i>)}
-              
-              {/* return null; */}
-            })()}
-                              {/* <span className="icon has-text-warning"> {(()=>{
-                                if(habit.categories === "Nutrition"){
-                                  return <i className="fas fa-star "></i>
-                                }
-                  )} */}
-                          
-                                
-                              </span>
-                            </div>
-
-                            <div className="column">
-                              <h3 className="subtitle is-4 has-text-weight-semibold ">
-                                {habit.habitname}{" "}
-                              </h3>
-                              <p className="content">{habit.dailyhabit} </p>
-                              <p className="content">
-                                <strong>Category:</strong> {habit.categories}{" "}
-                              </p>
-                            </div>
-                          </div>
+                      <Link to={`/explore/${habit._id}`}>
+                        <div className="card">
                           <br></br>
-                          <footer className="card-footer">
+
+                          <div
+                            className="card-content column is-10 is-offset-1"
+                            key={habit._id}
+                          >
+                            <div className="columns">
+                              <div className="card-image column is-one-fifth ">
+                                <span className="icon has-text-warning">
+                                  {(() => {
+                                    if (habit.categories === "Nutrition") {
+                                      return (
+                                        <i className="fas fa-lemon fa-2x"></i>
+                                      );
+                                    } else if (
+                                      habit.categories === "Mental Health"
+                                    ) {
+                                      return (
+                                        <i className="fas fa-brain fa-2x"></i>
+                                      );
+                                    } else if (habit.categories === "Sleep") {
+                                      return (
+                                        <i className="fas fa-bed fa-2x"></i>
+                                      );
+                                    } else if (habit.categories === "Energy") {
+                                      return (
+                                        <i className="fas fa-battery-full fa-2x"></i>
+                                      );
+                                    } else {
+                                      return (
+                                        <i className="fas fa-star fa-2x"></i>
+                                      );
+                                    }
+                                  })()}
+                                </span>
+                              </div>
+                                  <div className ="cardtext">
+                              <div className="column">
+                                <h3 className="subtitle is-4 has-text-weight-semibold habitname ">
+                                  {habit.habitname}
+                                </h3>
+                                <p className="content dailyhabit">{habit.dailyhabit} </p>
+                                <p className="content is-size-7">
+                                  <strong>Category:</strong> {habit.categories}{" "}
+                                </p>
+                              </div></div>
+                            </div>
+                            {/* <footer className="card-footer">
                             <Link
                               className="card-footer-item"
                               to={`/explore/${habit._id}`}
                             >
                               <h3 className="button is-danger is-rounded is-medium">
                                 See more
-                              </h3>
+                              </h3> 
                             </Link>
-                          </footer>
+                          </footer> */}
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   );
                 })}
