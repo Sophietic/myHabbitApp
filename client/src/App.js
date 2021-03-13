@@ -38,17 +38,17 @@ function App() {
 
   isAuthenticated();
 
+  
   if (loggedInUser) {
     return (
-      <div className="content">
-        <Header
-          userInSession={loggedInUser}
-          getLoggedInUser={getLoggedInUser}
-        />
-
-        <div>
-          <Switch>
-            <Route
+<div className="main">
+  <Header
+   userInSession={loggedInUser}
+   getLoggedInUser={getLoggedInUser}
+ />
+<div className="content">
+ <Switch>
+   <Route
               exact
               path="/"
               component={() => <Homepage loggedInUser={loggedInUser} />}
@@ -78,7 +78,7 @@ function App() {
             />
           </Switch>
         </div>
-        <div className="footer">
+        <div className="footer mt-0 pt- pb-6">
           <Footer />
         </div>
       </div>
@@ -86,11 +86,12 @@ function App() {
   } else {
     //niet ingelogd
     return (
-      <div className="content">
-        <Header
+      <div className="main">
+         <Header
           userInSession={loggedInUser}
           getLoggedInUser={getLoggedInUser}
         />
+      <div className="content">
         <Switch>
           <Route
             exact
@@ -114,7 +115,9 @@ function App() {
             )}
           />
         </Switch>
-        <div className="footer">
+    
+      </div>
+      <div className="footer mt-0 pt- pb-6">
           <Footer />
         </div>
       </div>

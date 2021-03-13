@@ -1,0 +1,14 @@
+.cardtext{
+        display: flex;
+}
+
+
+
+  h3{
+      min-height: 8vh;
+  }
+
+  .dailyhabit{
+    display: flex;
+   min-height: 9vh;
+  }

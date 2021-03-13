@@ -1,10 +1,11 @@
-html,
-body {
-    min-height: 100vh;
+.main {
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
-}
-content > footer {
-    margin-top: auto;
-}
+  }
+  
+  .content {
+    flex: 1;
+    
+  }
 
