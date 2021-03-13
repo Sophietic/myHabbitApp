@@ -5,9 +5,9 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer className="footer">
-      <div className="content has-text-centered">
-        <p>
+    <footer className="footer mt-0 mb-0 pb-0 pt-0">
+      <div className="content has-text-centered mt-0 mb-0 pb-0 pt-0">
+        <p >
           <strong>Copyright © 2020 </strong>
           <a className="has-text-danger" href="https://github.com/Sophietic">
             Sophie Tichelaar.

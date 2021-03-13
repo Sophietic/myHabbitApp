@@ -29,9 +29,9 @@ function Header(props) {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <a className="navbar-item" href="/">
-            <img src=".././logo192.png" alt="Healthy Habits" />
-          </a>
+        <a className="navbar-item is-size-5 is-family-code " href="/">
+      <img src=".././logo192.png" alt="Healthy Habits" /> <p className="ml-5 mr-6">Healthy Habits</p> 
+    </a>
           <a
             role="button"
             className={`navbar-burger burger${isActive ? "is-active" : ""}`}
@@ -73,12 +73,12 @@ function Header(props) {
     return (
       <nav className="navbar is-danger">
         <div className="navbar-brand">
-          <a className="navbar-item" href="/">
-            <img src=".././logo192.png" alt="Healthy Habits" />
+          <a className="navbar-item is-size-5 is-family-code " href="/">
+            <img src=".././logo192.png" alt="Healthy Habits" /> <p className="ml-5 mr-6">Healthy Habits</p> 
           </a>
           <a
             role="button"
-            className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
+            className={`navbar-burger burger ${isActive ? "is-active" : ""} `}
             aria-label="menu"
             aria-expanded="false"
             data-target="navbarBasicExample"

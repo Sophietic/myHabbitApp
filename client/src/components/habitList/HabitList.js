@@ -60,16 +60,16 @@ function HabitList() {
                   return (
                     <div class="column is-one-third">
                       <Link to={`/explore/${habit._id}`}>
-                        <div className="card">
+                        <div className="card p-1">
                           <br></br>
 
                           <div
-                            className="card-content column is-10 is-offset-1"
+                            className="card-content column is-12 p-1 m-"
                             key={habit._id}
                           >
-                            <div className="columns">
-                              <div className="card-image column is-one-fifth ">
-                                <span className="icon has-text-warning">
+                            <div className="columns m-2">
+                              <div className="card-image column is-one-fifth pl-3  ">
+                                <span className="icon has-text-warning ">
                                   {(() => {
                                     if (habit.categories === "Nutrition") {
                                       return (
@@ -97,16 +97,20 @@ function HabitList() {
                                   })()}
                                 </span>
                               </div>
-                                  <div className ="cardtext">
-                              <div className="column">
-                                <h3 className="subtitle is-4 has-text-weight-semibold habitname ">
-                                  {habit.habitname}
-                                </h3>
-                                <p className="content dailyhabit">{habit.dailyhabit} </p>
-                                <p className="content is-size-7">
-                                  <strong>Category:</strong> {habit.categories}{" "}
-                                </p>
-                              </div></div>
+                              <div className="cardtext m-0 p-0">
+                                <div className="column">
+                                  <h3 className="blok subtitle is-4 has-text-weight-semibold habitname mb-0 ">
+                                    {habit.habitname}
+                                  </h3>
+                                  <p className="blok content dailyhabit  mt-0 mb-0">
+                                    {habit.dailyhabit}{" "}
+                                  </p>
+                                  <p className="blok content is-size-7 pt-0 mt-0">
+                                    <strong>Category:</strong>{" "}
+                                    {habit.categories}{" "}
+                                  </p>
+                                </div>
+                              </div>
                             </div>
                             {/* <footer className="card-footer">
                             <Link
